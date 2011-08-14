@@ -12,21 +12,25 @@ Dependencies
 ------------
 Noted : I'm using Ubuntu 11.04 on Macbook Pro which install VIM from Synaptics.
 
-There are some 
+For installing, you should check all these on ~/.vim/bundle/   
 
 1. Check syntax after editing files : https://github.com/tomtom/checksyntax_vim.git
-2. Pathogen : https://github.com/tpope/vim-pathogen
-3. Snipmate-vim from garbas as Snipmate maintainer : https://github.com/garbas/vim-snipmate
-4. Follow Snipmate-vim tutorial to download another dependencies
-5. Snipmate-snippetsi : https://github.com/honza/snipmate-snippets
+2. Pathogen https://github.com/tpope/vim-pathogen
+3. Snipmate-vim from garbas https://github.com/garbas/vim-snipmate
+4. Get Snipmate-vim dependency : 
+    git clone https://github.com/tomtom/tlib_vim.git
+    git clone https://github.com/MarcWeber/vim-addon-mw-utils.git
+
+5. Snipmate-snippets : https://github.com/honza/snipmate-snippets 
 6. Fugitive for Github easy connection : http://github.com/tpope/vim-fugitive.git
 7. Supertab from https://github.com/ervandew/supertab.git
 8. NERDTree for file explorer from https://github.com/scrooloose/nerdtree
 
-All of this plugin located in ~/.vim/bundle because i using Pathogen here
 
-Also, i install Python Debugger like pyflakes, pylint and pep8
- 
+All of this plugin should clone on ~/.vim/bundle because i using Pathogen here
+
+Also, i install Python Debugger like pyflakes, pylint and pep8. 
+
 For installing Python debugger using PIP :
 
 sudo pip install pylint

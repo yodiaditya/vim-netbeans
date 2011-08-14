@@ -2,17 +2,37 @@ VIM-Netbeans
 =============
 
 We want use VIM as great as Netbeans for editing PHP, Phyton, JS, HTML, XML and many else filetype.
+
 This VIM bundled with many plugins, syntax and custom .vimrc configuration. 
 
 This VIM is inspired by many great developers that share their custom VIM configuration.
 
 All TLDR; documentation located in .vimrc. You can read and follow link there to see related projects used.
 
+Installing
+-----------
+Go to your Command / Terminal : 
+
+cd ~/
+
+git clone git://github.com/yodiaditya/vim-netbeans.git
+
+cd vim-netbeans/bundle/
+
+ln -s ~/vim-netbeans/.vim ~/.vim
+
+ln -s ~/vim-netbeans/.vimrc ~/.vimrc
+
+cd ~/vim-netbeans/bundle/
+
+
+Then download dependencies package.
+
+
 Dependencies
 ------------
-Noted : I'm using Ubuntu 11.04 on Macbook Pro which install VIM from Synaptics.
 
-For installing, you should check all these on ~/.vim/bundle/   
+After do installing, you should clone all these package into ~/vim-netbeans/bundle/   
 
 1. Check syntax after editing files : https://github.com/tomtom/checksyntax_vim.git
 
@@ -47,11 +67,7 @@ sudo pip install pyflakes
 
 sudo pip install pep8
 
-
-Installing
------------
-
-Just clone this Git and read .vimrc to know magic keys used.
+Read .vimrc for magic keys and guide.
 
 
 Usage

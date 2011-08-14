@@ -40,8 +40,8 @@ Installing
 Just clone this Git and read .vimrc to know magic keys used.
 
 
-NOTE
------
+Usage
+------
 For using this custom VIM, here are some clue : 
 
 1. Use Backspace as PageUp & Space as PageDown 
@@ -51,10 +51,14 @@ For using this custom VIM, here are some clue :
 3. Move tab using CTRL+Arrow
 
 
-Creator
-------
+Author
+-------
 I'm using VIM for Experience in using this VIM.
+
 Check out my blog : 
+
 1. http://yoodey.com for Drupal 7, EC2 and Ubuntu Tutorial
+
 2. http://cisight.com for Codeigniter and Optimization Tutorial 
+
 3. http://wpscale.com for Wordpress Tutorial

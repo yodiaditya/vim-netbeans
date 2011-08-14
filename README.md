@@ -55,9 +55,9 @@ For using this custom VIM, here are some clue :
 
 Author
 -------
-I'm using VIM for Experience in using this VIM.
+I'm using VIM and Netbeans for building many application on PHP and Python
 
-Check out my blog : 
+Check out my blog for another articles : 
 
 1. http://yoodey.com for Drupal 7, EC2 and Ubuntu Tutorial
 

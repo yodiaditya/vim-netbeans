@@ -30,7 +30,9 @@ Here are related articles : http://dancingpenguinsoflight.com/2009/02/python-and
 For installing Python debugger :
 
 sudo pip install pylint
+
 sudo pip install pyflakes
+
 sudo pip install pep8
 
 

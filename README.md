@@ -8,7 +8,7 @@ This VIM is inspired by many great developers that share their custom VIM config
 
 All TLDR; documentation located in .vimrc. You can read and follow link there to see related projects used.
 
-Dependecies
+Dependencies
 ------------
 Noted : I'm using Ubuntu 11.04 on Macbook Pro which install VIM from Synaptics.
 

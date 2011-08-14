@@ -2,11 +2,12 @@
 " 1. Check syntax after editing files : https://github.com/tomtom/checksyntax_vim.git
 " 2. Pathogen https://github.com/tpope/vim-pathogen
 " 3. Snipmate-vim from garbas https://github.com/garbas/vim-snipmate
-" 4. From Snipmate-vim tutorial, i also got another dependecies plugin
-" 5. Snipmate-snippets
+" 4. Follow Snipmate-vim tutorial to download another dependencies
+" 5. Snipmate-snippets : https://github.com/honza/snipmate-snippets 
 " 6. Fugitive for Github easy connection : http://github.com/tpope/vim-fugitive.git
 " 7. Supertab from https://github.com/ervandew/supertab.git
-"
+" 8. NERDTree for file explorer from https://github.com/scrooloose/nerdtree
+" 
 " All of this plugin located in ~/.vim/bundle because i using Pathogen here
 "
 " Also, i install Python Debugger like pyflakes, pylint and pep8
@@ -262,11 +263,9 @@ map <buffer> <S-e> :w<CR>:!/usr/bin/env python % <CR>
 " how to using NERDTree : http://ykyuen.wordpress.com/2011/04/04/nerdtree-the-file-explorer-in-vivim/
 """""""""""""""""""""""""""""""""""""""""""
 
-if exists("loaded_nerd_tree")
-    autocmd VimEnter * NERDTree         " Make Always Load NERDTree every opening files
-    autocmd BufEnter * NERDTreeMirror   " Mirroring NERDTree
-    autocmd VimEnter * wincmd p         " Automatically go to buffer every time open files
-endif
+autocmd VimEnter * NERDTree         " Make Always Load NERDTree every opening files
+autocmd BufEnter * NERDTreeMirror   " Mirroring NERDTree
+autocmd VimEnter * wincmd p         " Automatically go to buffer every time open files
 
 " FIXING NERDTree, automatically close if there no file edited 
 "https://github.com/scrooloose/nerdtree/issues/21

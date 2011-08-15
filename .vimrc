@@ -213,13 +213,11 @@ set ignorecase      " ignores case of letters on searches
 set smartcase       " Override the 'ignorecase' option if the search pattern contains upper case characters
 :highlight search guifg=yellow guibg=darkred
 
-nnoremap :set nonumber!
-
 " Use UTF-8 as the default buffer encoding
 set enc=utf-8
 
 " Always show status line, even for one window
-" set laststatus=2
+set laststatus=2
 
 " Scroll when cursor gets within 3 characters of top/bottom edge
 set scrolloff=3
@@ -360,5 +358,6 @@ function! JavaScriptFold()
     endfunction
     setl foldtext=FoldText()
 endfunction
+
 
 

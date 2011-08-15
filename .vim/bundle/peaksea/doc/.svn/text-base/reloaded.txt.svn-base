@@ -1,0 +1,384 @@
+*reloaded.txt*  Color Tuner and Reloader           Last change:  20 July 2006
+
+
+PERSONAL COLOUR TUNER AND RELOADER                               *psc_reload*
+
+
+Author:  Pan, Shizhu.  <see vim online for my e-mail>
+
+==============================================================================
+CONTENTS                                                 *pcr* *pcr-contents*
+
+	1. Contents.....................|pcr-contents|
+	2. PCR Overview.................|pcr-overview|
+	3. PCR Usage....................|pcr-usage|
+	4. PCR Options..................|pcr-options|
+	5. PCR FAQ .....................|pcr-faq|
+	6. PCR Todo List................|pcr-todo|
+
+For release notes, please see the header of reloaded.vim
+
+==============================================================================
+PCR FEATURES OVERVIEW                           *pcr-features* *pcr-overview*
+
+	Features ~
+
+	. PCR is a color scheme tuner and reloader.
+	. PCR is an optional utility for ps_color as well as other schemes
+	. It tunes the whole color scheme in HSL color space.
+	. Can use visible brightness instead of theoretic one.
+	. Thousands of color styles can be achieved by HSL tuning.
+	. Tuned output can be saved to create new color schemes.
+	. Can be configured to tune your own color scheme.
+	. Works under GUI only, do not affect console version.
+
+	Design Concern ~
+
+	When I'm designing the color scheme |ps_color|, I realized it is
+	extremely difficult to fine-tune the color, the whole step is not at
+	all straight forward.  What is more, RGB is not quite comprehensive
+	for most average people.  It would be much better if it is possible to
+	tune the color scheme in HSL color space.  Many color schemes in vim
+	are actually similar, just some tune in the HSL color space.
+
+	It is very easy to understand HSL color space even if one has NO
+	previous knowledge.  This may be another reason to use HSL color
+	space.
+
+	Portability ~
+
+	Before playing the game of colors, you are strongly recommended to
+	adjust your monitor to 6500k color temperature and proper gamma curve.
+	This has been described in the |ps_color.txt| at the same
+	"Portability" section.  If you don't know how, just skip it.
+
+	The only portability issue, for the obvious reason, this is GUI only.
+	;-)
+
+==============================================================================
+PSC USAGE                                                         *pcr-usage*
+
+	For the impatient ~
+
+	Make sure both ps_color.vim and reloaded.vim are in your
+	[runtimepath]/colors and type in the following command >
+
+		:colo reloaded
+<
+        in your Vim or append to your |.vimrc|.  The [runtimepath] can be any
+        'writable' directory listed in |vimfiles|, normally your $HOME/.vim in
+        Unix or $HOME/vimfiles in Windows.
+	
+	Note that you don't need to remove your current :colo lines in .vimrc,
+        since the :colo reloaded does nothing on color scheme, the
+        reloaded.vim has to be a color scheme for some bizarre reason.  
+
+	Note if you do not want to have ps_color.vim, go to FAQ section to see
+	how to create your own.
+
+	Experiencing ~
+        
+	Normally, nothing will happen when you sourced the colorscheme
+	reloaded, this only enables the command :Reload.
+
+	The :Reload command will be available after you sourced the
+	colorscheme reloaded.  If not, type :colo reloaded now. 
+	
+	Now try the following:
+>
+		:Reload 60 100 100 120 341 0 0 0 0
+<
+	If you do as above, you will get a greenish feeling like "Matrix
+	reloaded".  You can run the Reload command in vim command line as well
+	as in .vimrc. To see what the :Reload is capable of, try the
+	following, one by one:
+>
+		:Reload 120 100 100 60 341 128 0
+		:Reload 120 100 100 60 341 0 1 0 1
+		:Reload 480 84 84 195 256 96 0
+		:Reload 720 71 100 360 0 0 0 0 1
+		:Reload 60 100 100 150 341 0 0
+		:Reload 240 100 100 330 341 0 1 0 1
+		:Reload 360 100 100 180 0 0 0 1
+		:Reload 360 100 100 180 0 0 1 0
+<
+	(Hint: choose a document which has as much highlight as possible to
+	see what the come scheme looks like. Vim scripts or Vim help documents
+	may be good samples.)
+
+	. The first line will give you a golden feeling, followed by
+	  a reversed version. 
+	. Next comes a low contrast dark-cyan-background scheme.
+	. Next comes a black background with decreased saturation.
+	. The Hue can be changed anyway. This is a cyan-green style, call it
+	  "Matrix revolution"?
+	. Be hot, lets try a reddish style.
+	. The last two lines will give you the same as ps_color 'cool' and
+	  'warm' style.
+
+	Are you amazed? I guess so.  And, of course all the above can be
+	further fine-tuned.
+
+	If you want to explore the mysteries inside this, see the next
+	section.
+
+==============================================================================
+PCR OPTIONS                                                     *pcr-options*
+
+	Since it is much easier and straight forward to specify command line
+	arguments, there are no need to create individual options. Here we
+	describe the 10 parameters.
+
+	Synopsis ~
+
+	:Reload h_r s_m l_m h_p s_b l_b [ lbg [ pf [ vl [ vb [ cdf ] ] ] ] ]
+
+	Scope ~
+
+	Hue is the dominant parameter to a color, because the human eye is
+	very sensitive to the changing of hue.  Generally, the hue is
+	expressed by angle, can be 0 to 360 degrees, where 359 degree is equal
+	to -1 degree, 360 degree is equal to 0 degree, 361 degree is equal to
+	1 degree, etc.
+
+	The human eye is less sensitive to Saturation, the Black, Grey, and
+	White has saturation=0, The pure Red, Green, and Blue has
+	saturation=max, usually, saturation is defined to be between 0 and 1.
+	But Vim is not capable of handling floating points, so I defined the
+	saturation to be between 0 and 1023. 
+
+	The saturation is the amount the different color elements differs, if
+	the red, green, blue are similar, the saturation is low.
+
+	The human eye is least sensitive to Luminance, since the dynamic range
+	of human eye can be changed on the fly.  The luminance, or to say
+	brightness, needs no explanation, since the meaning is quite obvious.
+
+	The Luminance is also defined to be 0 to 1023, for the same reason.
+
+	Parameter h_r and h_p ~
+
+	This refers to hue range and hue phase.
+	
+	set the hue range to any positive value, the hue will be in the range
+	of hue_phase-(hue_range/2) to hue_phase-(hue_range/2)
+
+	The normal hue is from 0 to 360, let hue_range=360 and hue_phase=180
+	will have the range 0 to 360, hence the hue of original color scheme
+	will be retained. 
+
+	Set the hue range to between 0 and 360 will have the hue range
+	compressed, or to say a color-filtered look.  Set the hue range to
+	0 will force all colors in the color scheme to have the same hue value
+	as hue_phase.  You may not want it to be that low, since the
+	hue_range=60 will in most cases enough to give the whole color scheme
+	a color-filtered look.
+	
+	Set the hue range to >360 will have the color changed without compress
+	the hue range, the behavior is not easy to describe, you need to do
+	more experiments to understand what it does.
+
+	Set the hue range to <0 is illegal.
+
+	The hue_phase is the base value the whole color scheme designed
+	around.  Usually, the Hue=0 is Red, Hue=60 is Yellow, Hue=120 is
+	Green, Hue=180 is Cyan, Hue=240 is Blue, Hue=300 is Magenta, any other
+	value is between two color, for example, Hue=30 is Orange color.
+
+	It would be very interesting to see how a color scheme changes when
+	change the hue_phase.
+
+	Parameter s_m and s_b ~
+
+	This refers to saturation modify and saturation base
+
+	The saturation modify is a percent value, 100 means no modify. 
+	If set to 50, all saturation will be decreased to 50%, 
+	If set to 0, the screen will be black and white (greyscale), 
+	If set to 200, all saturation will be increased to 200% times the
+	original value.
+
+	The saturation base is a linear value, it defines the minimum
+	saturation.
+	If set to 0, the saturation will not be modified.
+	If set to 256, the minimum saturation will be 1/4.
+	If set to 341, the minimum saturation will be 1/3.
+	If set to 512, the minimum saturation will be 1/2.
+
+	Oops, please _note_ that a too high value of saturation is not quite
+	comfortable for most people.
+
+	Parameter l_m and l_b ~
+
+	This refers to luminance modify and luminance base
+
+	The luminance modify is a percent value, 100 means no modify. 
+	If set to 50, all luminance will be decreased to 50%, 
+	If set to 0, the screen will be completely dark (can be possibly used
+	for boss key?)
+	If set to 200, all luminance will be increased to 200% times the
+	original value.
+
+	The luminance base is a linear value, it defines the minimum
+	luminance. 
+	
+	Main use of this is to tune the background for a dark background
+	colorscheme.
+	If set to 0, the background will be black.
+	If set to 128, the background will be a 1/8 dark one, the color of
+	background can be tuned by saturation_base and hue_phase.
+	If set to 1023, the screen will be completely white.
+
+	For light background, it is recommended to set luminance base to 0.
+
+
+	Parameter lbg ~
+
+	This refers to light background
+
+	when set to 1, the reloader choose a light background scheme and set
+	bg to light, otherwise, it is set to 0.
+
+	This options is optional, if omitted, it checks the value of
+	g:psc_style, if the style is 'warm', the light background is set to 1.
+
+	Parameter pf ~
+
+	This refers to plain font
+
+	Optional, set to 1 will turn all bolded font to plain font.
+	When not set, will check for g:psc_fontface, if non-exists,
+	default to 0.
+
+	Parameter vl ~
+
+	This refers to visible luminance
+
+	When set to 1, the luminance will be calculated according to visible
+	lumance:
+>
+	lum = red * 30% + green * 58% + blue * 12%
+<
+	The default is to use HSL luminance, i.e.
+>
+	lum = ( max(red, green, blue) + min(red, green, blue) ) / 2
+	command.
+<
+	Parameter vb ~
+
+	This refers to 'verbose'
+
+	When set to 1, some debug messages will be echoed when running the
+	command.
+	
+	Parameter cdf ~
+
+	This refers to custom data file
+
+	The default data file is the ps_color.vim placed at the same directory
+	as reloaded.vim.  You can set it to any file you want.
+
+	When present, it should be the file name of your data file.
+	For example, if your data file is ~/.vim/colors/template.vim:
+>
+	:Reload 360 100 100 180 0 0 1 0 0 template.vim
+<
+	will reload the light color scheme in template.vim
+							    *pcr-custom-data*
+	Designing a data file ~
+
+	The data file can be a normal color scheme script, such as
+	ps_color.vim, You may need to know more if you want to do
+	modifications.
+
+	The ps_color.vim is fairly complicated, but only part of the file are
+	imported as data.  Mainly, you only need to see how it organizes
+	statements in between "DEFINE START" and "DEFINE END" blocks.
+
+	The data file should conform to some restrictions:
+
+	. Must be in the same directory as reloaded.vim
+
+	. ALL highlight group must be defined, do not accept any default
+	  value, this include the Underline and Ignore groups, this also hints
+	  that both foreground and background must be defined.  Use :ru
+	  syntax/hitest.vim to check if all highlight groups are defined.
+
+	. Color names like "SlateBlue" should not be used, only hardcoded color
+	  like #rrggbb is acceptable, the fg and bg can be used though, Since
+	  fg and bg comes from the group Normal, and Normal group must be
+	  defined with #rrggbb form of foreground and background.
+
+	. The following should exist in the file
+>
+		" DARK COLOR DEFINE START
+		" DARK COLOR DEFINE END
+		" LIGHT COLOR DEFINE START
+		" LIGHT COLOR DEFINE END
+		" COLOR LINKS DEFINE START
+		" COLOR LINKS DEFINE END
+<
+	  the highlight statement should be placed in between START and END.  
+	  All statement other than the 'highlight' will be silently discarded.
+
+	  You can put dark color scheme defines in dark color define section,
+	  or light color scheme in light color section.  It doesn't matter if
+	  you have nothing in the section, since the defaults are used.
+	  However, the defaults will not be tuned in the HSL color space,
+	  which may be you want, and may not! 
+	  
+	  Further statements can be put in color links define section, you can
+	  put any 'highlight' statements in this section since the statements
+	  in this section will be execute unparsed, if you want to manually
+	  change some groups in a reloaded scheme, put something there.
+
+
+==============================================================================
+PCR FAQ AND TIPS                                                    *pcr-faq*
+>
+	Q: How to make my own color to be tunable?
+<
+	A: Your own color scheme must conform to some restrictions, 
+	   see |pcr-custom-data| for details.
+>
+	Q: How to run reloaded.vim without having ps_color.vim?
+<
+	A: reloaded.vim is just a utility to reload colorscheme, it does not
+	   contain any colors. You must have a data file, or to say
+	   colorscheme, contains the 'highlight' statements like those in
+	   ps_color.vim, and tell the reloaded.vim to use that file.
+	   Instructions on creating custom data file is described in
+	   |pcr-custom-data|.
+>
+	Q: How to export the tuned output to create new color scheme?
+<
+	A: This is still under construction, currently you can set verbose in
+	   the command line parameter and capture the output, but it is not
+	   working very well.
+>
+	Q: Why this should be a colorschme instead of a plugin utility?
+<
+	A: This seems to be a Vim bug (or to say 'feature' if you prefer), the
+	   main function will hang up if run as a plugin and you will not be
+	   able to source the colorscheme in the current Vim session, so,
+	   please put reloaded.vim in ~/.vim/colors, do NOT put it in
+	   ~/.vim/plugin !
+>
+	Q: Why it is impossible to browse functions in reloaded.vim with
+	   taglist plugin?
+<
+	A: The old versions of exuberant ctags utility do not cope with <sid>
+	   functions very well, please download and recompile the newest
+	   version of exuberant ctags utility.
+
+
+==============================================================================
+PCR TODO LIST                                                      *pcr-todo*
+
+	o Fix the remaining bugs.
+	o Try to be able to parse color names
+	o Improve the output feature
+
+==============================================================================
+
+vim:tw=78:ts=8:noet:ft=help:fo+=t:norl:noet:

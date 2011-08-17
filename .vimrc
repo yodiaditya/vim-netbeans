@@ -24,6 +24,7 @@ Bundle 'tomtom/tlib_vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'honza/snipmate-snippets'
 Bundle 'scrooloose/nerdtree'
+Bundle 'spf13/PIV'
 
 filetype plugin indent on     " required! 
 "
@@ -82,10 +83,6 @@ filetype plugin indent on     " required!
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
 set history=500
-
-" Enable filetype plugin
-filetype plugin on
-filetype indent on
 
 " Set to auto read when a file is changed from the outside
 set autowrite
@@ -227,7 +224,7 @@ nnoremap <leader>v "+gP
 
 " The best thing here! 
 " In insert mode, you can paste from clipboard using CTRL + v
-inoremap <c-v> <esc>:set paste<enter><insert><c-r>+<enter><esc>:set nopaste<enter><insert>
+inoremap <C-v> <ESC>:set paste<ENTER>"*p<ESC>:set nopaste<ENTER>i
 
 " have command-line completion <tab> (for filenames, help topics, option names)
 " first list the available options and complete the longest common part, then

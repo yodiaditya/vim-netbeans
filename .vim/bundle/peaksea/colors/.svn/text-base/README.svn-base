@@ -1,6 +1,0 @@
-
-peaksea.vim are generated from peaksea_t.vim, so please do edit peaksea_t.vim instead of peaksea.vim
-
-ctermconv.py is a script to read peaksea_t.vim and generates peaksea.vim
-
-

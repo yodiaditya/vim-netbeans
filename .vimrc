@@ -25,6 +25,8 @@ Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'honza/snipmate-snippets'
 Bundle 'scrooloose/nerdtree'
 Bundle 'spf13/PIV'
+Bundle 'andre-luiz-dos-santos/autocomp'
+Bundle 'cschlueter/vim-mustang'
 
 filetype plugin indent on     " required! 
 "
@@ -82,7 +84,11 @@ filetype plugin indent on     " required!
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
-set history=500
+set history=1000
+set undolevels = 1000
+
+" Ignore some file
+set wildignore = *.pyc, *.swp, *.class
 
 " Set to auto read when a file is changed from the outside
 set autowrite
@@ -124,6 +130,7 @@ set wrap "Wrap lines
 set so=7            " Set 7 lines to the curors - when moving vertical..
 set ruler           "Always show current position
 set hid             "Change buffer - without saving
+set hidden
 
 " Set backspace config
 set backspace=eol,start,indent
@@ -133,7 +140,6 @@ set nolazyredraw "Don't redraw while executing macros
 set magic "Set magic on, for regular expressions
 
 set showmatch "Show matching bracets when text indicator is over them
-set mat=2 "How many tenths of a second to blink
 
 " No sound on errors
 set noerrorbells
@@ -153,7 +159,7 @@ if has("gui_running")
   set guioptions-=T
   set t_Co=256
   set background=dark
-  colorscheme peaksea
+  colorscheme mustang 
   set nonu
 else
   set background=dark
@@ -185,7 +191,7 @@ map k gk
 " Map space to / (search) and c-space to ? (backgwards search)
 map <space> /
 map <c-space> ?
-map <silent> <leader><cr> :noh<cr>
+map <silent> <leader><cr> :nohlsearch<cr>
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>
@@ -224,7 +230,8 @@ nnoremap <leader>v "+gP
 
 " The best thing here! 
 " In insert mode, you can paste from clipboard using CTRL + v
-inoremap <C-v> <ESC>:set paste<ENTER>"*p<ESC>:set nopaste<ENTER>i
+inoremap <C-v> <ESC>:set paste<CR>"+gp<ESC>:set nopaste<ENTER>i
+"inoremap <C-v> <ESC>:set paste<CR>"+gP<CR>:set nopaste<ENTER><ESC>i
 
 " have command-line completion <tab> (for filenames, help topics, option names)
 " first list the available options and complete the longest common part, then

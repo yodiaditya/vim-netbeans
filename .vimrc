@@ -286,7 +286,7 @@ imap <C-@> <C-Space>
 
 "---- PHP executing shortcut --"
 " Execute PHP file being edited with <Shift> + p:
-map <buffer> <S-p> :w<CR>:!/usr/bin/php5 % <CR>
+map <buffer> <P> :w<CR>:!/usr/bin/php5 % <CR>
 
 "
 " This is from : http://dancingpenguinsoflight.com/2009/02/python-and-vim-make-your-own-ide/
@@ -296,7 +296,7 @@ map <buffer> <S-p> :w<CR>:!/usr/bin/php5 % <CR>
 nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 
 " Execute Python file being edited with <Shift> + e:
-map <buffer> <S-e> :w<CR>:!/usr/bin/env python % <CR>
+nnoremap E w:<CR>:!python % <CR>
 
 " Set autocomplete form 
 set completeopt=menuone,longest,preview

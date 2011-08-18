@@ -62,12 +62,14 @@ Also, i install Python Debugger like pyflakes, pylint and pep8.
 For installing Python debugger using PIP :
 
 sudo pip install pylint
-
 sudo pip install pyflakes
-
 sudo pip install pep8
+sudo pip install ropevim
 
 Read .vimrc for magic keys and guide.
+
+For using Ubuntu
+sudo apt-get install exuberant-ctags
 
 
 Usage

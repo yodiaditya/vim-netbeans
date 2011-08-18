@@ -19,14 +19,14 @@ Bundle 'peaksea'
 Bundle 'FuzzyFinder'
 Bundle 'Conque-Shell'
 Bundle 'L9'
-Bundle 'garbas/vim-snipmate'
 Bundle 'tomtom/tlib_vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'honza/snipmate-snippets'
 Bundle 'scrooloose/nerdtree'
-Bundle 'spf13/PIV'
-Bundle 'andre-luiz-dos-santos/autocomp'
 Bundle 'cschlueter/vim-mustang'
+Bundle 'vim-scripts/AutoComplPop'
+Bundle 'majutsushi/tagbar'
+Bundle 'msanders/snipmate.vim'
+Bundle 'vim-scripts/Pydiction'
 
 filetype plugin indent on     " required! 
 "
@@ -53,7 +53,6 @@ filetype plugin indent on     " required!
 "    git clone https://github.com/tomtom/tlib_vim.git
 "    git clone https://github.com/MarcWeber/vim-addon-mw-utils.git
 "
-" 3. Snipmate-snippets : https://github.com/honza/snipmate-snippets 
 " 4. Fugitive for Github easy connection : http://github.com/tpope/vim-fugitive.git
 " 5. NERDTree for file explorer from https://github.com/scrooloose/nerdtree
 
@@ -68,7 +67,8 @@ filetype plugin indent on     " required!
 "
 " There are some well documentation here according into several plugin used : 
 " http://sontek.net/turning-vim-into-a-modern-python-ide#basic-editing-and-debugging
-"
+" 
+" sudo apt-get install vim-scripts
 
 " This configuration taken mixed from many resource and some customed by me :
 " Amix.dk ( Founder Plurk )
@@ -301,9 +301,27 @@ nnoremap E w:<CR>:!python % <CR>
 " Set autocomplete form 
 set completeopt=menuone,longest,preview
 
-" Omni Autocomplete PHP "
+" Omni Autocomplete"
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType php set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType python set omnifunc=pythoncomplete#Complete
 
+
+" If you prefer the Omni-Completion tip window to close when a selection is
+" made, these lines close it on movement in insert mode or when leaving
+" insert mode
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+" You might also find this useful
+" PHP Generated Code Highlights (HTML & SQL)                                              
+                  
+let php_sql_query=1                                                                                        
+let php_htmlInStrings=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -336,9 +354,10 @@ endfunction
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+let g:pydiction_location='~/.vim/bundle/Pydiction/complete-dict'
 
 "" PYTHON auto completion from http://blog.dispatched.ch/2009/05/24/vim-as-python-ide/
-autocmd FileType python set omnifunc=pythoncomplete#Complete
+
 
 "--- python formatting help ---
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
@@ -351,3 +370,13 @@ autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,
 "
 let g:pep8_map='<leader>8'
 
+highlight Pmenu gui=bold
+let g:acp_enableAtStartup=1
+let g:acp_behaviorSnipmateLength=1
+
+if has("gui_running")
+    highlight SpellBad term=underline gui=undercurl guisp=Orange
+endif
+
+" http://stackoverflow.com/questions/1687252/with-vim-use-both-snipmate-and-pydiction-together-share-the-tab-key "
+" Change share keys between pydiction and snipmate

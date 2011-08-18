@@ -85,18 +85,18 @@ filetype plugin indent on     " required!
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
 set history=1000
-set undolevels = 1000
+set undolevels=1000
 
 " Ignore some file
-set wildignore = *.pyc, *.swp, *.class
+set wildignore=*.swp,*.bak,*.pyc,*.class
 
 " Set to auto read when a file is changed from the outside
 set autowrite
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
+let mapleader=","
+let g:mapleader=","
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -231,7 +231,6 @@ nnoremap <leader>v "+gP
 " The best thing here! 
 " In insert mode, you can paste from clipboard using CTRL + v
 inoremap <C-v> <ESC>:set paste<CR>"+gp<ESC>:set nopaste<ENTER>i
-"inoremap <C-v> <ESC>:set paste<CR>"+gP<CR>:set nopaste<ENTER><ESC>i
 
 " have command-line completion <tab> (for filenames, help topics, option names)
 " first list the available options and complete the longest common part, then
@@ -345,7 +344,7 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
 " Pyflakes : http://sontek.net/turning-vim-into-a-modern-python-ide#id8
-" let g:pyflakes_use_quickfix = 1
+" let g:pyflakes_use_quickfix=1
 
 "
 " Pep8 from : http://sontek.net/turning-vim-into-a-modern-python-ide#id9

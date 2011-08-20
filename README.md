@@ -15,47 +15,17 @@ Go to your Command / Terminal :
 
 cd ~/
 
-git clone git://github.com/yodiaditya/vim-netbeans.git
-
-cd vim-netbeans/bundle/
+git clone git://github.com/yodiaditya/vim-netbeans.git vim-netbeans
 
 ln -s ~/vim-netbeans/.vim ~/.vim
 
 ln -s ~/vim-netbeans/.vimrc ~/.vimrc
 
-cd ~/vim-netbeans/bundle/
-
-
-Then download dependencies package.
-
 
 Dependencies
 ------------
 
-After do installing, you should clone all these package into ~/vim-netbeans/bundle/   
-
-1. Check syntax after editing files : https://github.com/tomtom/checksyntax_vim.git
-
-2. Pathogen https://github.com/tpope/vim-pathogen
-
-3. Snipmate-vim from garbas https://github.com/garbas/vim-snipmate
-
-4. Get Snipmate-vim dependency : 
-    
-    git clone https://github.com/tomtom/tlib_vim.git
-
-    git clone https://github.com/MarcWeber/vim-addon-mw-utils.git
-
-5. Snipmate-snippets : https://github.com/honza/snipmate-snippets 
-
-6. Fugitive for Github easy connection : http://github.com/tpope/vim-fugitive.git
-
-7. Supertab from https://github.com/ervandew/supertab.git
-
-8. NERDTree for file explorer from https://github.com/scrooloose/nerdtree
-
-
-All of this plugin should clone on ~/.vim/bundle because i using Pathogen here
+After do installing, you should go to VIM and do :BundleInstall. I use Vundle here which i use pathogen in the past development.
 
 Also, i install Python Debugger like pyflakes, pylint and pep8. 
 
@@ -64,11 +34,10 @@ For installing Python debugger using PIP :
 sudo pip install pylint
 sudo pip install pyflakes
 sudo pip install pep8
-sudo pip install ropevim
 
 Read .vimrc for magic keys and guide.
 
-For using Ubuntu
+Also you need Ctags. If you using Ubuntu, then can do this command :
 sudo apt-get install exuberant-ctags
 
 
@@ -78,19 +47,27 @@ For using this custom VIM, here are some clue :
 
 1. Use Backspace as PageUp & Space as PageDown 
 
-2. Use tab in insert mode for autocomplete. 
+2. Use tab in insert mode for autocomplete for Python ( using PyDiction )
 
-3. Move tab using CTRL+Arrow
+3. Text Autocomplete every you type. Also you can use CTRL + Space for Omni Completion
+
+4. Move tab using CTRL+Arrow
+
+5. Using NERDTree by :NERDTree or editing .vimrc to enable NERDTree automatically.
 
 
 Author
 -------
-I'm using VIM and Netbeans for building many application on PHP and Python
+I'm using VIM and Netbeans for building many application on PHP, JS and Python
 
-Check out my blog for another articles : 
+I have a lot of blog which contains many information. You can check here : 
 
 1. http://yoodey.com for Drupal 7, EC2 and Ubuntu Tutorial
 
-2. http://cisight.com for Codeigniter and Optimization Tutorial 
+2. http://cisight.com for Codeigniter, CakePHP and Optimization Tutorial 
 
 3. http://wpscale.com for Wordpress Tutorial
+
+4. http://yodi.me for my Programming Insight
+
+5. http://re.web.id for Indonesian Python Programming Guide

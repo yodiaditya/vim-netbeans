@@ -24,9 +24,16 @@ Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'scrooloose/nerdtree'
 Bundle 'cschlueter/vim-mustang'
 Bundle 'vim-scripts/AutoComplPop'
-Bundle 'majutsushi/tagbar'
 Bundle 'msanders/snipmate.vim'
 Bundle 'vim-scripts/Pydiction'
+Bundle 'int3/vim-taglist-plus'
+Bundle 'markabe/bufexplorer'
+Bundle 'lukaszb/vim-web-indent'
+Bundle 'vim-scripts/bufexplorer.zip'
+Bundle 'git.wincent.com/command-t.git'
+Bundle 'mattn/zencoding-vim'
+Bundle 'jamescarr/snipmate-nodejs'
+Bundle 'godlygeek/tabular'
 
 filetype plugin indent on     " required! 
 "
@@ -130,7 +137,7 @@ set wrap "Wrap lines
 set so=7            " Set 7 lines to the curors - when moving vertical..
 set ruler           "Always show current position
 set hid             "Change buffer - without saving
-set hidden
+set nohidden
 
 " Set backspace config
 set backspace=eol,start,indent
@@ -230,7 +237,7 @@ nnoremap <leader>v "+gP
 
 " The best thing here! 
 " In insert mode, you can paste from clipboard using CTRL + v
-inoremap <C-v> <ESC>:set paste<CR>"+gp<ESC>:set nopaste<ENTER>i
+inoremap <C-v> <ESC>:set paste<CR>"+gP<ESC>:set nopaste<ENTER>i
 
 " have command-line completion <tab> (for filenames, help topics, option names)
 " first list the available options and complete the longest common part, then
@@ -302,14 +309,27 @@ nnoremap E w:<CR>:!python % <CR>
 set completeopt=menuone,longest,preview
 
 " Omni Autocomplete"
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType php set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType php set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType python set omnifunc=pythoncomplete#Complete
 
+" http://www.brankovukelic.com/post/2091037293/turn-vim-into-powerful-javascript-editor"
+
+" HTML (tab width 2 chr, no wrapping)
+autocmd FileType html set sw=2
+autocmd FileType html set ts=2
+autocmd FileType html set sts=2
+autocmd FileType html set textwidth=0
+" XHTML (tab width 2 chr, no wrapping)
+autocmd FileType xhtml set sw=2
+autocmd FileType xhtml set ts=2
+autocmd FileType xhtml set sts=2
+autocmd FileType xhtml set textwidth=0
+" CSS (tab width 2 chr, wrap at 79th char)
+autocmd FileType css set sw=2
+autocmd FileType css set ts=2
+autocmd FileType css set sts=2
 
 " If you prefer the Omni-Completion tip window to close when a selection is
 " made, these lines close it on movement in insert mode or when leaving
@@ -380,3 +400,29 @@ endif
 
 " http://stackoverflow.com/questions/1687252/with-vim-use-both-snipmate-and-pydiction-together-share-the-tab-key "
 " Change share keys between pydiction and snipmate
+"
+
+
+""""""""""""""""""""""""""""""
+" => JavaScript section
+"""""""""""""""""""""""""""""""
+au FileType javascript call JavaScriptFold()
+au FileType javascript setl fen
+au FileType javascript setl nocindent
+
+au FileType javascript imap <c-t> AJS.log();<esc>hi
+au FileType javascript imap <c-a> alert();<esc>hi
+
+au FileType javascript inoremap <buffer> $r return
+au FileType javascript inoremap <buffer> $f //--- PH ----------------------------------------------<esc>FP2xi
+
+function! JavaScriptFold()
+    setl foldmethod=syntax
+    setl foldlevelstart=1
+    syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
+
+    function! FoldText()
+    return substitute(getline(v:foldstart), '{.*', '{...}', '')
+    endfunction
+    setl foldtext=FoldText()
+endfunction

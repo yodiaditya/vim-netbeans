@@ -25,15 +25,22 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'cschlueter/vim-mustang'
 Bundle 'vim-scripts/AutoComplPop'
 Bundle 'msanders/snipmate.vim'
+Bundle 'vim-scripts/snipmate-snippets'
 Bundle 'vim-scripts/Pydiction'
 Bundle 'int3/vim-taglist-plus'
 Bundle 'markabe/bufexplorer'
-Bundle 'lukaszb/vim-web-indent'
 Bundle 'vim-scripts/bufexplorer.zip'
-Bundle 'git.wincent.com/command-t.git'
+Bundle 'vim-scripts/closetag.vim'
+ 
+"Javascript "
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'wavded/vim-stylus'
+Bundle 'lukaszb/vim-web-indent'
 Bundle 'mattn/zencoding-vim'
-Bundle 'jamescarr/snipmate-nodejs'
 Bundle 'godlygeek/tabular'
+Bundle 'jamescarr/snipmate-nodejs'
+
 
 filetype plugin indent on     " required! 
 "
@@ -236,8 +243,8 @@ set pastetoggle=<F3>          " Press F3 for toggle paste mode
 nnoremap <leader>v "+gP
 
 " The best thing here! 
-" In insert mode, you can paste from clipboard using CTRL + v
-inoremap <C-v> <ESC>:set paste<CR>"+gP<ESC>:set nopaste<ENTER>i
+" In insert mode, you can paste from clipboard using CTRL+v
+inoremap <C-v> <ESC>:set paste<CR>"+gp<ESC>:set nopaste<ENTER>i<RIGHT>
 
 " have command-line completion <tab> (for filenames, help topics, option names)
 " first list the available options and complete the longest common part, then

@@ -27,6 +27,9 @@ Dependencies
 
 After do installing, you should go to VIM and do :BundleInstall. I use Vundle here which i use pathogen in the past development.
 
+I use nodejs-snipmate and snipmate snippets from honza. So delete /snipmate.vim/snippets for enabling this two snippets update. 
+
+
 Also, i install Python Debugger like pyflakes, pylint and pep8. 
 
 For installing Python debugger using PIP :
@@ -39,7 +42,6 @@ Read .vimrc for magic keys and guide.
 
 Also you need Ctags. If you using Ubuntu, then can do this command :
 sudo apt-get install exuberant-ctags
-
 
 Usage
 ------

@@ -41,7 +41,9 @@ sudo pip install pep8
 Read .vimrc for magic keys and guide.
 
 Also you need Ctags. If you using Ubuntu, then can do this command :
+
 sudo apt-get install exuberant-ctags
+
 
 Usage
 ------
@@ -53,10 +55,11 @@ For using this custom VIM, here are some clue :
 
 3. Text Autocomplete every you type. Also you can use CTRL + Space for Omni Completion
 
-4. Move tab using CTRL+Arrow
+4. Move to another tab / buffer using CTRL+Arrow
 
 5. Using NERDTree by :NERDTree or editing .vimrc to enable NERDTree automatically.
 
+6. Use :e to create buffer instead using :tabe because it will conflicting with miniBufExplorer.
 
 Author
 -------

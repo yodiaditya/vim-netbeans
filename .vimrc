@@ -23,15 +23,17 @@ Bundle 'tomtom/tlib_vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'scrooloose/nerdtree'
 Bundle 'cschlueter/vim-mustang'
-Bundle 'vim-scripts/AutoComplPop'
 Bundle 'msanders/snipmate.vim'
 Bundle 'vim-scripts/snipmate-snippets'
-Bundle 'vim-scripts/Pydiction'
+"Bundle 'vim-scripts/Pydiction'
+Bundle 'vim-scripts/AutoComplPop'
+Bundle 'ervandew/supertab'
 Bundle 'int3/vim-taglist-plus'
 Bundle 'markabe/bufexplorer'
 Bundle 'vim-scripts/bufexplorer.zip'
 Bundle 'vim-scripts/closetag.vim'
- 
+Bundle 'fholgado/minibufexpl.vim'
+
 "Javascript "
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'digitaltoad/vim-jade'
@@ -321,6 +323,28 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
+" AutoComplPop
+let g:AutoComplPop_Behavior={'javascript' : [
+      \     {
+      \       'command'  : "\<C-n>",
+      \       'pattern'  : '\k\k$',
+      \       'excluded' : '^$',
+      \       'repeat'   : 0,
+      \     },
+      \     {
+      \       'command'  : "\<C-x>\<C-f>",
+      \       'pattern'  : (has('win32') || has('win64') ? '\f[/\\]\f*$' : '\f[/]\f*$'),
+      \       'excluded' : '[*/\\][/\\]\f*$\|[^[:print:]]\f*$',
+      \       'repeat'   : 1,
+      \     },
+      \     {
+      \       'command'  : "\<C-x>\<C-o>",
+      \       'pattern'  : '\([^. \t]\.\)$',
+      \       'excluded' : '^$',
+      \       'repeat'   : 0,
+      \     },
+      \   ]}
+
 " http://www.brankovukelic.com/post/2091037293/turn-vim-into-powerful-javascript-editor"
 
 " HTML (tab width 2 chr, no wrapping)
@@ -349,6 +373,12 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
                   
 let php_sql_query=1                                                                                        
 let php_htmlInStrings=1
+
+" Folding
+autocmd Syntax c,cpp,vim,xml,html,xhtml,js,php,py,python setlocal foldmethod=syntax
+autocmd Syntax c,cpp,vim,xml,html,xhtml,perl normal zR
+set foldlevelstart=99
+set nofoldenable
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -379,6 +409,16 @@ function! s:CloseIfOnlyNerdTreeLeft()
   endif
 endfunction
 
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
+"
+if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:pydiction_location='~/.vim/bundle/Pydiction/complete-dict'
@@ -408,28 +448,3 @@ endif
 " http://stackoverflow.com/questions/1687252/with-vim-use-both-snipmate-and-pydiction-together-share-the-tab-key "
 " Change share keys between pydiction and snipmate
 "
-
-
-""""""""""""""""""""""""""""""
-" => JavaScript section
-"""""""""""""""""""""""""""""""
-au FileType javascript call JavaScriptFold()
-au FileType javascript setl fen
-au FileType javascript setl nocindent
-
-au FileType javascript imap <c-t> AJS.log();<esc>hi
-au FileType javascript imap <c-a> alert();<esc>hi
-
-au FileType javascript inoremap <buffer> $r return
-au FileType javascript inoremap <buffer> $f //--- PH ----------------------------------------------<esc>FP2xi
-
-function! JavaScriptFold()
-    setl foldmethod=syntax
-    setl foldlevelstart=1
-    syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
-
-    function! FoldText()
-    return substitute(getline(v:foldstart), '{.*', '{...}', '')
-    endfunction
-    setl foldtext=FoldText()
-endfunction

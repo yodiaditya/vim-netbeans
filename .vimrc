@@ -25,12 +25,10 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'cschlueter/vim-mustang'
 Bundle 'msanders/snipmate.vim'
 Bundle 'vim-scripts/snipmate-snippets'
-"Bundle 'vim-scripts/Pydiction'
+Bundle 'vim-scripts/Pydiction'
 Bundle 'vim-scripts/AutoComplPop'
 Bundle 'ervandew/supertab'
 Bundle 'int3/vim-taglist-plus'
-Bundle 'markabe/bufexplorer'
-Bundle 'vim-scripts/bufexplorer.zip'
 Bundle 'vim-scripts/closetag.vim'
 Bundle 'fholgado/minibufexpl.vim'
 
@@ -42,7 +40,7 @@ Bundle 'lukaszb/vim-web-indent'
 Bundle 'mattn/zencoding-vim'
 Bundle 'godlygeek/tabular'
 Bundle 'jamescarr/snipmate-nodejs'
-
+Bundle 'wavded/vim-javascript'
 
 filetype plugin indent on     " required! 
 "
@@ -313,6 +311,9 @@ nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 
 " Execute Python file being edited with <Shift> + e:
 nnoremap E w:<CR>:!python % <CR>
+
+" Execute NodeJS file being edited with <Shift> + n:
+nnoremap N w:<CR>:!node %<CR>
 
 " Set autocomplete form 
 set completeopt=menuone,longest,preview

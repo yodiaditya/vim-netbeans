@@ -3,6 +3,8 @@ VIM-Netbeans
 
 We want use VIM as great as Netbeans for editing PHP, Phyton, JS, HTML, XML and many else filetype.
 
+Now this VIM-Netbeans supported with NodeJS, Stylus, Less and many CSS/Javascript engine, template, parser 
+
 This VIM bundled with many plugins, syntax and custom .vimrc configuration. 
 
 This VIM is inspired by many great developers that share their custom VIM configuration.

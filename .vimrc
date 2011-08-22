@@ -16,21 +16,32 @@ Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 " vim-scripts repos
 Bundle 'peaksea'
-Bundle 'FuzzyFinder'
 Bundle 'Conque-Shell'
 Bundle 'L9'
 Bundle 'tomtom/tlib_vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'scrooloose/nerdtree'
 Bundle 'cschlueter/vim-mustang'
+Bundle 'sukima/xmledit'
+Bundle 'vim-scripts/closetag.vim'
+Bundle 'mhz/vim-matchit.git'
+Bundle 'vim-scripts/tComment'
+
+"Files manager
+Bundle 'majutsushi/tagbar'
+Bundle 'ervandew/supertab'
+Bundle 'scrooloose/nerdtree'
+Bundle 'fholgado/minibufexpl.vim'
+Bundle 'FuzzyFinder'
+Bundle 'vim-scripts/mru.vim'
+
+"Snipmate
 Bundle 'msanders/snipmate.vim'
 Bundle 'vim-scripts/snipmate-snippets'
-Bundle 'vim-scripts/Pydiction'
 Bundle 'vim-scripts/AutoComplPop'
-Bundle 'ervandew/supertab'
-Bundle 'int3/vim-taglist-plus'
-Bundle 'vim-scripts/closetag.vim'
-Bundle 'fholgado/minibufexpl.vim'
+Bundle 'robhudson/snipmate_for_django'
+
+" Python development
+Bundle 'vim-scripts/Pydiction'
 
 "Javascript "
 Bundle 'kchmck/vim-coffee-script'
@@ -41,8 +52,14 @@ Bundle 'mattn/zencoding-vim'
 Bundle 'godlygeek/tabular'
 Bundle 'jamescarr/snipmate-nodejs'
 Bundle 'wavded/vim-javascript'
+Bundle 'lunaru/vim-less'
+
+" Syntax checking 
+Bundle 'scrooloose/syntastic'
 
 filetype plugin indent on     " required! 
+
+
 "
 " Brief help
 "
@@ -319,12 +336,18 @@ nnoremap N w:<CR>:!node %<CR>
 set completeopt=menuone,longest,preview
 
 " Omni Autocomplete"
+" Thanks to http://blog.fluther.com/django-vim/ "
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
-" AutoComplPop
+" Enabling Django : https://github.com/robhudson/snipmate_for_django
+autocmd FileType python set ft=python.django " For SnipMate
+autocmd FileType html set ft=htmldjango.html " For SnipMate
+
+
+" AutoComplPop for Javascript
 let g:AutoComplPop_Behavior={'javascript' : [
       \     {
       \       'command'  : "\<C-n>",
@@ -371,7 +394,6 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " You might also find this useful
 " PHP Generated Code Highlights (HTML & SQL)                                              
-                  
 let php_sql_query=1                                                                                        
 let php_htmlInStrings=1
 
@@ -382,6 +404,51 @@ set foldlevelstart=99
 set nofoldenable
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NerdTree and Tagbar using by <F8>
+
+function! ToggleNERDTreeAndTagbar()
+    let w:jumpbacktohere = 1
+
+    " Detect which plugins are open
+    if exists('t:NERDTreeBufName')
+        let nerdtree_open = bufwinnr(t:NERDTreeBufName) != -1
+    else
+        let nerdtree_open = 0
+    endif
+    let tagbar_open = bufwinnr('__Tagbar__') != -1
+
+    " Perform the appropriate action
+    if nerdtree_open && tagbar_open
+        NERDTreeClose
+        TagbarClose
+    elseif nerdtree_open
+        TagbarOpen
+    elseif tagbar_open
+        NERDTree
+    else
+        NERDTree
+        TagbarOpen
+    endif
+
+    " Jump back to the original window
+    for window in range(1, winnr('$'))
+        execute window . 'wincmd w'
+        if exists('w:jumpbacktohere')
+            unlet w:jumpbacktohere
+            break
+        endif
+    endfor
+endfunction
+
+" now you can open NERDTree and Tagbar using F8
+" http://stackoverflow.com/questions/6624043/how-to-open-or-close-nerdtree-and-tagbar-with-leader
+nmap <F8> :call ToggleNERDTreeAndTagbar()<CR>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" FuzzFinder Shorcuts. Using F7 for opening FuzzyFinderTextMate
+map <F7> :FuzzyFinderTextMate<CR>
+map <leader>b :FuzzyFinderBuffer<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""
 " NERDTree : https://github.com/scrooloose/nerdtree.git

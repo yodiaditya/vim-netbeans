@@ -63,6 +63,9 @@ For using this custom VIM, here are some clue :
 
 6. Use :e to create buffer instead using :tabe because it will conflicting with miniBufExplorer.
 
+7. Press F8 for enabling NERDTRee and Tagbar (Love it!) 
+
+
 Author
 -------
 I'm using VIM and Netbeans for building many application on PHP, JS and Python

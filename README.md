@@ -61,7 +61,7 @@ For using this custom VIM, here are some clue :
 
 5. Using NERDTree by :NERDTree or editing .vimrc to enable NERDTree automatically.
 
-6. Use :e to create buffer instead using :tabe because it will conflicting with miniBufExplorer.
+6. Using F7 for FuzzFinder Files Current Buffer 
 
 7. Press F8 for enabling NERDTRee and Tagbar (Love it!) 
 

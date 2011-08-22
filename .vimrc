@@ -446,7 +446,8 @@ nmap <F8> :call ToggleNERDTreeAndTagbar()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FuzzFinder Shorcuts. Using F7 for opening FuzzyFinderTextMate
-map <F7> :FufFileWithCurrentBufferDir<CR>
+map <leader>t :FufFileWithCurrentBufferDir<CR>
+map <F7> :FufFileWithFullCwd<CR>
 map <leader>b :FufBuffer<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""

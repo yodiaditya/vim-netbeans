@@ -345,6 +345,20 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType python set ft=python.django " For SnipMate
 autocmd FileType html set ft=htmldjango.html " For SnipMate
 
+" Django Tips from https://bitbucket.org/sjl/dotfiles/src/tip/vim/.vimrc
+au BufNewFile,BufRead urls.py      setlocal nowrap
+au BufNewFile,BufRead urls.py      normal! zR
+au BufNewFile,BufRead dashboard.py normal! zR
+
+au BufNewFile,BufRead admin.py     setlocal filetype=python.django
+au BufNewFile,BufRead urls.py      setlocal filetype=python.django
+au BufNewFile,BufRead models.py    setlocal filetype=python.django
+au BufNewFile,BufRead views.py     setlocal filetype=python.django
+au BufNewFile,BufRead settings.py  setlocal filetype=python.django
+au BufNewFile,BufRead settings.py  setlocal foldmethod=marker
+au BufNewFile,BufRead forms.py     setlocal filetype=python.django
+au BufNewFile,BufRead common_settings.py  setlocal filetype=python.django
+au BufNewFile,BufRead common_settings.py  setlocal foldmethod=marker
 
 " AutoComplPop for Javascript
 let g:AutoComplPop_Behavior={'javascript' : [

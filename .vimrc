@@ -30,7 +30,6 @@ Bundle 'vim-scripts/tComment'
 Bundle 'majutsushi/tagbar'
 Bundle 'ervandew/supertab'
 Bundle 'scrooloose/nerdtree'
-Bundle 'fholgado/minibufexpl.vim'
 Bundle 'FuzzyFinder'
 Bundle 'vim-scripts/mru.vim'
 
@@ -447,8 +446,8 @@ nmap <F8> :call ToggleNERDTreeAndTagbar()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FuzzFinder Shorcuts. Using F7 for opening FuzzyFinderTextMate
-map <F7> :FuzzyFinderTextMate<CR>
-map <leader>b :FuzzyFinderBuffer<CR>
+map <F7> :FufFileWithCurrentBufferDir<CR>
+map <leader>b :FufBuffer<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""
 " NERDTree : https://github.com/scrooloose/nerdtree.git

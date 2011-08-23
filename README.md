@@ -31,6 +31,10 @@ ln -s ~/vim-netbeans/.vim ~/.vim
 
 ln -s ~/vim-netbeans/.vimrc ~/.vimrc
 
+Change your TAB behaviour between PyDiction and Snipmate by follow this link :
+
+http://stackoverflow.com/questions/1687252/with-vim-use-both-snipmate-and-pydiction-together-share-the-tab-key
+
 
 Dependencies
 ------------

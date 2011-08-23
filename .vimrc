@@ -77,9 +77,12 @@ filetype plugin indent on     " required!
 " HOWTO Installation
 " 1. Delete bundle/snipmate.vim/snippets because we will use another updated snippets
 " reference : http://cisight.com/solving-snipmate-vim-error-snippet-c-is-already-defined/
+" 
+" 2. Change Tab as your behaviour between Snipmate and Pydiction :
+" http://stackoverflow.com/questions/1687252/with-vim-use-both-snipmate-and-pydiction-together-share-the-tab-key
 "
-" 2. Fugitive for Github easy connection : http://github.com/tpope/vim-fugitive.git
-" 3. NERDTree for file explorer from https://github.com/scrooloose/nerdtree
+" 3. Fugitive for Github easy connection : http://github.com/tpope/vim-fugitive.git
+" 4. NERDTree for file explorer from https://github.com/scrooloose/nerdtree
 
 " Also, i install Python Debugger like pyflakes, pylint and pep8
 " Here are related articles : http://dancingpenguinsoflight.com/2009/02/python-and-vim-make-your-own-ide/
@@ -213,9 +216,6 @@ set noswapfile
 map j gj
 map k gk
 
-" Map space to / (search) and c-space to ? (backgwards search)
-map <space> /
-map <c-space> ?
 map <silent> <leader><cr> :nohlsearch<cr>
 
 " Close the current buffer
@@ -237,9 +237,7 @@ map <leader>tm :tabmove
 " When pressing <leader>cd switch to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 "
 " My CUSTOM 
 "
@@ -302,12 +300,13 @@ noremap <BS> <PageUp>
 set backspace=eol,start,indent
 
 "--- netbeans style with CTRL + SPACE autocompletion ----
-inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
-\ "\<lt>C-n>" :
-\ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
-\ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
-\ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
-imap <C-@> <C-Space>
+"inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
+"\ "\<lt>C-n>" :
+"\ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
+"\ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
+"\ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
+"imap <C-@> <C-Space>
+
 
 "---- PHP executing shortcut --"
 " Execute PHP file being edited with <Shift> + p:

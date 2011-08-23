@@ -35,6 +35,18 @@ Change your TAB behaviour between PyDiction and Snipmate by follow this link :
 
 http://stackoverflow.com/questions/1687252/with-vim-use-both-snipmate-and-pydiction-together-share-the-tab-key
 
+But i prefer using CTRL+Space as Snipmate Completion by :
+
+vim .vim/bundle/snipmate.vim/after/plugin/snipMate.vim
+
+Edit start from line 15 :
+
+"ino <silent> <tab> <c-r>=TriggerSnippet()<cr>
+"snor <silent> <tab> <esc>i<right><c-r>=TriggerSnippet()<cr>
+ino <silent> <C-Space> <c-r>=TriggerSnippet()<cr>
+snor <silent> <C-Space> <esc>i<right><c-r>=TriggerSnippet()<CR>
+
+
 
 Dependencies
 ------------

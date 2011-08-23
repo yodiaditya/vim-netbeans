@@ -305,7 +305,7 @@ set backspace=eol,start,indent
 "\ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
 "\ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
 "\ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
-"imap <C-@> <C-Space>
+imap <C-@> <C-Space>
 
 
 "---- PHP executing shortcut --"

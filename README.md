@@ -19,6 +19,14 @@ cd ~/
 
 git clone git://github.com/yodiaditya/vim-netbeans.git vim-netbeans
 
+cd vim-neatbeans
+
+vim .vimrc 
+
+When opening .vimrc, do ":BundleInstall" to install all package and exit by :wq.
+
+rm -rf .vim/bundle/snipmate.vim/snippets
+
 ln -s ~/vim-netbeans/.vim ~/.vim
 
 ln -s ~/vim-netbeans/.vimrc ~/.vimrc

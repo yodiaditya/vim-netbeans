@@ -18,8 +18,6 @@ Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'peaksea'
 Bundle 'Conque-Shell'
 Bundle 'L9'
-Bundle 'tomtom/tlib_vim'
-Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'cschlueter/vim-mustang'
 Bundle 'sukima/xmledit'
 Bundle 'vim-scripts/closetag.vim'
@@ -36,7 +34,8 @@ Bundle 'vim-scripts/mru.vim'
 "Snipmate
 Bundle 'msanders/snipmate.vim'
 Bundle 'vim-scripts/snipmate-snippets'
-Bundle 'vim-scripts/AutoComplPop'
+"Bundle 'vim-scripts/AutoComplPop' because there is the creator refer to neocomplcache
+Bundle "Shougo/neocomplcache"
 Bundle 'robhudson/snipmate_for_django'
 
 " Python development
@@ -58,7 +57,6 @@ Bundle 'scrooloose/syntastic'
 
 filetype plugin indent on     " required! 
 
-
 "
 " Brief help
 "
@@ -76,15 +74,12 @@ filetype plugin indent on     " required!
 " Note: comments after Bundle command are not allowed..
 "
 
-" List plugin usage in this vim.
+" HOWTO Installation
+" 1. Delete bundle/snipmate.vim/snippets because we will use another updated snippets
+" reference : http://cisight.com/solving-snipmate-vim-error-snippet-c-is-already-defined/
 "
-" 1. Snipmate-vim from garbas https://github.com/garbas/vim-snipmate
-" 2. Get Snipmate-vim dependency : 
-"    git clone https://github.com/tomtom/tlib_vim.git
-"    git clone https://github.com/MarcWeber/vim-addon-mw-utils.git
-"
-" 4. Fugitive for Github easy connection : http://github.com/tpope/vim-fugitive.git
-" 5. NERDTree for file explorer from https://github.com/scrooloose/nerdtree
+" 2. Fugitive for Github easy connection : http://github.com/tpope/vim-fugitive.git
+" 3. NERDTree for file explorer from https://github.com/scrooloose/nerdtree
 
 " Also, i install Python Debugger like pyflakes, pylint and pep8
 " Here are related articles : http://dancingpenguinsoflight.com/2009/02/python-and-vim-make-your-own-ide/
@@ -334,16 +329,9 @@ nnoremap N w:<CR>:!node %<CR>
 " Set autocomplete form 
 set completeopt=menuone,longest,preview
 
-" Omni Autocomplete"
-" Thanks to http://blog.fluther.com/django-vim/ "
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-
 " Enabling Django : https://github.com/robhudson/snipmate_for_django
 autocmd FileType python set ft=python.django " For SnipMate
-autocmd FileType html set ft=htmldjango.html " For SnipMate
+" autocmd FileType html set ft=htmldjango.html " For SnipMate
 
 " Django Tips from https://bitbucket.org/sjl/dotfiles/src/tip/vim/.vimrc
 au BufNewFile,BufRead urls.py      setlocal nowrap
@@ -360,28 +348,6 @@ au BufNewFile,BufRead forms.py     setlocal filetype=python.django
 au BufNewFile,BufRead common_settings.py  setlocal filetype=python.django
 au BufNewFile,BufRead common_settings.py  setlocal foldmethod=marker
 
-" AutoComplPop for Javascript
-let g:AutoComplPop_Behavior={'javascript' : [
-      \     {
-      \       'command'  : "\<C-n>",
-      \       'pattern'  : '\k\k$',
-      \       'excluded' : '^$',
-      \       'repeat'   : 0,
-      \     },
-      \     {
-      \       'command'  : "\<C-x>\<C-f>",
-      \       'pattern'  : (has('win32') || has('win64') ? '\f[/\\]\f*$' : '\f[/]\f*$'),
-      \       'excluded' : '[*/\\][/\\]\f*$\|[^[:print:]]\f*$',
-      \       'repeat'   : 1,
-      \     },
-      \     {
-      \       'command'  : "\<C-x>\<C-o>",
-      \       'pattern'  : '\([^. \t]\.\)$',
-      \       'excluded' : '^$',
-      \       'repeat'   : 0,
-      \     },
-      \   ]}
-
 " http://www.brankovukelic.com/post/2091037293/turn-vim-into-powerful-javascript-editor"
 
 " HTML (tab width 2 chr, no wrapping)
@@ -389,11 +355,13 @@ autocmd FileType html set sw=2
 autocmd FileType html set ts=2
 autocmd FileType html set sts=2
 autocmd FileType html set textwidth=0
+
 " XHTML (tab width 2 chr, no wrapping)
 autocmd FileType xhtml set sw=2
 autocmd FileType xhtml set ts=2
 autocmd FileType xhtml set sts=2
 autocmd FileType xhtml set textwidth=0
+
 " CSS (tab width 2 chr, wrap at 79th char)
 autocmd FileType css set sw=2
 autocmd FileType css set ts=2
@@ -520,8 +488,30 @@ autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,
 let g:pep8_map='<leader>8'
 
 highlight Pmenu gui=bold
-let g:acp_enableAtStartup=1
-let g:acp_behaviorSnipmateLength=1
+
+" Configure neocomplcache 
+" http://www.vim.org/scripts/script.php?script_id=2620
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_enable_auto_select = 1
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplcache_omni_patterns')
+let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+"autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+
+
 
 if has("gui_running")
     highlight SpellBad term=underline gui=undercurl guisp=Orange

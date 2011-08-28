@@ -23,6 +23,7 @@ Bundle 'sukima/xmledit'
 Bundle 'vim-scripts/closetag.vim'
 Bundle 'mhz/vim-matchit.git'
 Bundle 'vim-scripts/tComment'
+Bundle 'Raimondi/delimitMate'
 
 "Files manager
 Bundle 'majutsushi/tagbar'
@@ -54,6 +55,9 @@ Bundle 'joestelmach/javaScriptLint.vim'
 
 " Syntax checking 
 Bundle 'scrooloose/syntastic'
+
+" Python
+Bundle 'kevinw/pyflakes-vim'
 
 filetype plugin indent on     " required! 
 
@@ -327,7 +331,7 @@ nnoremap E w:<CR>:!python % <CR>
 nnoremap N w:<CR>:!node %<CR>
 
 " Execute javascriptLint vim plugin using <Shift> + j : 
-nnoremap J w:<CR>:JavaScriptLint <ENTER><CR>
+nnoremap J w:<CR>:JavaScriptLintExec <ENTER><CR>
 
 " Set autocomplete form 
 set completeopt=menuone,longest,preview
@@ -428,6 +432,9 @@ endfunction
 " http://stackoverflow.com/questions/6624043/how-to-open-or-close-nerdtree-and-tagbar-with-leader
 nmap <F8> :call ToggleNERDTreeAndTagbar()<CR>
 
+let g:tagbar_usearrows = 1
+nnoremap <leader>l :TagbarToggle<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FuzzFinder Shorcuts. Using F2 for opening FuzzyFinderTextMate
@@ -516,10 +523,15 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 "autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 
-
 if has("gui_running")
     highlight SpellBad term=underline gui=undercurl guisp=Orange
 endif
+
+" Enable autoclose tags only for html
+"http://mirnazim.org/writings/vim-plugins-i-use/
+autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
+autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag/plugin/closetag.vim
+
 
 " http://stackoverflow.com/questions/1687252/with-vim-use-both-snipmate-and-pydiction-together-share-the-tab-key "
 " Change share keys between pydiction and snipmate

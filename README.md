@@ -82,6 +82,13 @@ This is powerfull Javascript syntax checker with quickfix.
 
 Folow this link for installation guide : http://cisight.com/auto-checking-errors-for-javascript-in-vim/
 
+Also add this into .vim/bundle/javaScriptLint.vim/plugin/javaScriptLint.vim :
+
+
+" set up commands
+command! JavaScriptLintExec call JavascriptLint()
+command! JavaScriptLintClear call s:ClearCursorLineColor()
+
 
 Usage
 ------

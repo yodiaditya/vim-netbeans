@@ -26,7 +26,6 @@ Bundle 'vim-scripts/tComment'
 
 "Files manager
 Bundle 'majutsushi/tagbar'
-Bundle 'ervandew/supertab'
 Bundle 'scrooloose/nerdtree'
 Bundle 'FuzzyFinder'
 Bundle 'vim-scripts/mru.vim'
@@ -51,6 +50,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'jamescarr/snipmate-nodejs'
 Bundle 'wavded/vim-javascript'
 Bundle 'lunaru/vim-less'
+Bundle 'joestelmach/javaScriptLint.vim'
 
 " Syntax checking 
 Bundle 'scrooloose/syntastic'
@@ -180,7 +180,6 @@ set tm=500
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable "Enable syntax hl
 
-set gfn=Monospace\ 9
 set shell=/bin/bash
 
 if has("gui_running")
@@ -189,9 +188,11 @@ if has("gui_running")
   set background=dark
   colorscheme mustang 
   set nonu
+  set gfn=Monospace\ 9.4
 else
   set background=dark
-  set nonu
+  set gfn=Monospace\ 8
+  set nonu 
 endif
 
 set encoding=utf8
@@ -316,14 +317,17 @@ map <buffer> <P> :w<CR>:!/usr/bin/php5 % <CR>
 " This is from : http://dancingpenguinsoflight.com/2009/02/python-and-vim-make-your-own-ide/
 "
 
-" Toggle line numbers and fold column for easy copying by Pressing F2
-nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
+" Toggle line numbers and fold column for easy copying by Pressing F3
+nnoremap <F3> :set nonumber!<CR>:set foldcolumn=0<CR>
 
 " Execute Python file being edited with <Shift> + e:
 nnoremap E w:<CR>:!python % <CR>
 
 " Execute NodeJS file being edited with <Shift> + n:
 nnoremap N w:<CR>:!node %<CR>
+
+" Execute javascriptLint vim plugin using <Shift> + j : 
+nnoremap J w:<CR>:!JavaScriptLint %<CR>
 
 " Set autocomplete form 
 set completeopt=menuone,longest,preview
@@ -426,11 +430,13 @@ nmap <F8> :call ToggleNERDTreeAndTagbar()<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" FuzzFinder Shorcuts. Using F7 for opening FuzzyFinderTextMate
+" FuzzFinder Shorcuts. Using F2 for opening FuzzyFinderTextMate
 map <leader>t :FufFileWithCurrentBufferDir<CR>
-map <F7> :FufFileWithFullCwd<CR>
+map <F2> :FufFileWithFullCwd<CR>
 map <leader>b :FufBuffer<CR>
 
+" MRU shorcuts
+map <leader><space> :MRU<CR> 
 """"""""""""""""""""""""""""""""""""""""""""
 " NERDTree : https://github.com/scrooloose/nerdtree.git
 " MODIFYING NERDTree MY CUSTOM
@@ -491,9 +497,9 @@ highlight Pmenu gui=bold
 " Configure neocomplcache 
 " http://www.vim.org/scripts/script.php?script_id=2620
 let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_auto_select = 1
+let g:neocomplcache_min_syntax_length = 4 
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -511,7 +517,6 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 
 
-
 if has("gui_running")
     highlight SpellBad term=underline gui=undercurl guisp=Orange
 endif
@@ -519,3 +524,12 @@ endif
 " http://stackoverflow.com/questions/1687252/with-vim-use-both-snipmate-and-pydiction-together-share-the-tab-key "
 " Change share keys between pydiction and snipmate
 "
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""'
+if has("gui_running")
+    " Vimdiff colorscheme
+    highlight DiffAdd cterm=none ctermfg=bg ctermbg=Green gui=none guifg=bg guibg=Green
+    highlight DiffDelete cterm=none ctermfg=bg ctermbg=Red gui=none guifg=bg guibg=Red
+    highlight DiffChange cterm=none ctermfg=bg ctermbg=Yellow gui=none guifg=bg guibg=Yellow
+    highlight DiffText cterm=none ctermfg=bg ctermbg=Magenta gui=none guifg=bg guibg=Magenta
+endif

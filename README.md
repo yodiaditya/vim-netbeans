@@ -11,8 +11,10 @@ This VIM is inspired by many great developers that share their custom VIM config
 
 All TLDR; documentation located in .vimrc. You can read and follow link there to see related projects used.
 
+
 Installing
 -----------
+
 Go to your Command / Terminal : 
 
 cd ~/
@@ -35,7 +37,7 @@ Change your TAB behaviour between PyDiction and Snipmate by follow this link :
 
 http://stackoverflow.com/questions/1687252/with-vim-use-both-snipmate-and-pydiction-together-share-the-tab-key
 
-But i prefer using CTRL+Space as Snipmate Completion by :
+But i prefer using CTRL+Space as Snipmate Completion. Here a how to make it :
 
 vim .vim/bundle/snipmate.vim/after/plugin/snipMate.vim
 
@@ -53,10 +55,12 @@ Dependencies
 
 After do installing, you should go to VIM and do :BundleInstall. I use Vundle here which i use pathogen in the past development.
 
-I use nodejs-snipmate and snipmate snippets from honza. So delete /snipmate.vim/snippets for enabling this two snippets update. 
+I use nodejs-snipmate and snipmate-snippets. To preventing crash between default snippets in Snipmate and others,
+
+delete .vim/bundle/snipmate.vim/snippets. 
 
 
-Also, i install Python Debugger like pyflakes, pylint and pep8. 
+1. Python Debugger like pyflakes, pylint and pep8
 
 For installing Python debugger using PIP :
 
@@ -66,28 +70,47 @@ sudo pip install pep8
 
 Read .vimrc for magic keys and guide.
 
-Also you need Ctags. If you using Ubuntu, then can do this command :
+2. Ctags
+
+If you using Ubuntu, then can do this command :
 
 sudo apt-get install exuberant-ctags
+
+3. JavascriptLint
+
+This is powerfull Javascript syntax checker with quickfix.
+
+Folow this link for installation guide : http://cisight.com/auto-checking-errors-for-javascript-in-vim/
 
 
 Usage
 ------
 For using this custom VIM, here are some clue : 
 
-1. Use Backspace as PageUp & Space as PageDown 
+1. Use Backspace as PageUp & Space as PageDown in normal mode
 
-2. Use tab in insert mode for autocomplete for Python ( using PyDiction )
+2. Use tab (insert mode) for autocomplete Python using PyDiction
 
-3. Text Autocomplete every you type. Also you can use CTRL + Space for Omni Completion
+3. Autocomplete every you type. Also you can use CTRL + Space for Snipmate Autocompletion
 
 4. Move to another tab / buffer using CTRL+Arrow
 
 5. Using NERDTree by :NERDTree or editing .vimrc to enable NERDTree automatically.
 
-6. Using F7 for FuzzFinder in Full Path or <leader>t for open based on current Buffer 
+6. Using F7 for FuzzFinder in Full Path or <leader>t (,t) for open based on current Buffer 
 
 7. Press F8 for enabling NERDTRee and Tagbar (Love it!) 
+
+8. Use <leader> space for MRU
+
+9. Use Shift+e for execute Python code 
+
+10. Use Shift+n for execute NodeJS code 
+
+11. Use Shift+j for checking javascript syntax in current file 
+
+12. Also check many goodies bag in .vimrc
+
 
 
 Author

@@ -44,8 +44,11 @@ vim .vim/bundle/snipmate.vim/after/plugin/snipMate.vim
 Edit start from line 15 :
 
 "ino <silent> <tab> <c-r>=TriggerSnippet()<cr>
+
 "snor <silent> <tab> <esc>i<right><c-r>=TriggerSnippet()<cr>
+
 ino <silent> <C-Space> <c-r>=TriggerSnippet()<cr>
+
 snor <silent> <C-Space> <esc>i<right><c-r>=TriggerSnippet()<CR>
 
 
@@ -60,23 +63,27 @@ I use nodejs-snipmate and snipmate-snippets. To preventing crash between default
 delete .vim/bundle/snipmate.vim/snippets. 
 
 
-1. Python Debugger like pyflakes, pylint and pep8
+A. Python Debugger like pyflakes, pylint and pep8
 
 For installing Python debugger using PIP :
 
-sudo pip install pylint
-sudo pip install pyflakes
-sudo pip install pep8
+`sudo pip install git+git://github.com/kevinw/pyflakes.git`
+
+`sudo pip install pylint`
+
+`sudo pip install pep8`
 
 Read .vimrc for magic keys and guide.
 
-2. Ctags
+
+B. Ctags
 
 If you using Ubuntu, then can do this command :
 
-sudo apt-get install exuberant-ctags
+`sudo apt-get install exuberant-ctags`
 
-3. JavascriptLint
+
+C. JavascriptLint
 
 This is powerfull Javascript syntax checker with quickfix.
 
@@ -86,7 +93,9 @@ Also add this into .vim/bundle/javaScriptLint.vim/plugin/javaScriptLint.vim :
 
 
 " set up commands
+
 command! JavaScriptLintExec call JavascriptLint()
+
 command! JavaScriptLintClear call s:ClearCursorLineColor()
 
 

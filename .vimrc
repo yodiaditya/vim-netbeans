@@ -20,7 +20,7 @@ Bundle 'Conque-Shell'
 Bundle 'L9'
 Bundle 'cschlueter/vim-mustang'
 Bundle 'sukima/xmledit'
-Bundle 'vim-scripts/closetag.vim'
+"Bundle 'vim-scripts/closetag.vim'
 Bundle 'mhz/vim-matchit.git'
 Bundle 'vim-scripts/tComment'
 Bundle 'Raimondi/delimitMate'
@@ -36,10 +36,10 @@ Bundle 'msanders/snipmate.vim'
 Bundle 'vim-scripts/snipmate-snippets'
 "Bundle 'vim-scripts/AutoComplPop' because there is the creator refer to neocomplcache
 Bundle "Shougo/neocomplcache"
-Bundle 'robhudson/snipmate_for_django'
 
 " Python development
 Bundle 'vim-scripts/Pydiction'
+Bundle 'kevinw/pyflakes-vim'
 
 "Javascript "
 Bundle 'kchmck/vim-coffee-script'
@@ -56,8 +56,6 @@ Bundle 'joestelmach/javaScriptLint.vim'
 " Syntax checking 
 Bundle 'scrooloose/syntastic'
 
-" Python
-Bundle 'kevinw/pyflakes-vim'
 
 filetype plugin indent on     " required! 
 
@@ -193,6 +191,7 @@ if has("gui_running")
   colorscheme mustang 
   set nonu
   set gfn=Monospace\ 9.4
+  set lines=999 columns=999
 else
   set background=dark
   set gfn=Monospace\ 8
@@ -432,7 +431,10 @@ endfunction
 " http://stackoverflow.com/questions/6624043/how-to-open-or-close-nerdtree-and-tagbar-with-leader
 nmap <F8> :call ToggleNERDTreeAndTagbar()<CR>
 
-let g:tagbar_usearrows = 1
+" TagBar Configuration
+let g:tagbar_usearrows=1
+let g:tagbar_left=1
+let g:tagbar_width=30
 nnoremap <leader>l :TagbarToggle<CR>
 
 
@@ -493,6 +495,9 @@ autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,
 
 " Pyflakes : http://sontek.net/turning-vim-into-a-modern-python-ide#id8
 " let g:pyflakes_use_quickfix=1
+" http://lewk.org/blog/python-vim-pyflakes.html
+au BufWritePost *.py !pyflakes % 
+au BufWritePost *.py !python -c 'import py_compile; py_compile.compile("%")'
 
 "
 " Pep8 from : http://sontek.net/turning-vim-into-a-modern-python-ide#id9

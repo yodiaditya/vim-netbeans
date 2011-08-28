@@ -534,8 +534,8 @@ endif
 
 " Enable autoclose tags only for html
 "http://mirnazim.org/writings/vim-plugins-i-use/
-autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
-autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag/plugin/closetag.vim
+" autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
+" autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag/plugin/closetag.vim
 
 
 " http://stackoverflow.com/questions/1687252/with-vim-use-both-snipmate-and-pydiction-together-share-the-tab-key "

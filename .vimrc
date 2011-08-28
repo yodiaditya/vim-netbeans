@@ -327,7 +327,7 @@ nnoremap E w:<CR>:!python % <CR>
 nnoremap N w:<CR>:!node %<CR>
 
 " Execute javascriptLint vim plugin using <Shift> + j : 
-nnoremap J w:<CR>:!JavaScriptLint %<CR>
+nnoremap J w:<CR>:JavaScriptLint <ENTER><CR>
 
 " Set autocomplete form 
 set completeopt=menuone,longest,preview

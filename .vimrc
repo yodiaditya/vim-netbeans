@@ -496,7 +496,7 @@ autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,
 " Pyflakes : http://sontek.net/turning-vim-into-a-modern-python-ide#id8
 " let g:pyflakes_use_quickfix=1
 " http://lewk.org/blog/python-vim-pyflakes.html
-au BufWritePost *.py !pyflakes % 
+" au BufWritePost *.py !pyflakes % 
 
 "
 " Pep8 from : http://sontek.net/turning-vim-into-a-modern-python-ide#id9

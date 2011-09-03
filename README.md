@@ -63,9 +63,9 @@ A. Python Debugger like pyflakes, pylint and pep8
 
 For installing Python debugger using PIP :
 
-    `sudo pip install git+git://github.com/kevinw/pyflakes.git`
-    `sudo pip install pylint`
-    `sudo pip install pep8`
+    sudo pip install git+git://github.com/kevinw/pyflakes.git
+    sudo pip install pylint
+    sudo pip install pep8
 
 Read .vimrc for magic keys and guide.
 
@@ -96,34 +96,21 @@ Usage
 For using this custom VIM, here are some clue : 
 
 1. Use Backspace as PageUp & Space as PageDown in normal mode
-
 2. Use tab (insert mode) for autocomplete Python using PyDiction
-
 3. Autocomplete every you type. Also you can use CTRL + Space for Snipmate Autocompletion
-
 4. Move to another tab / buffer using CTRL+Arrow
-
 5. Using NERDTree by :NERDTree or editing .vimrc to enable NERDTree automatically.
-
 6. Using F7 for FuzzFinder in Full Path or <leader>t (,t) for open based on current Buffer 
-
 7. Press F8 for enabling NERDTRee and Tagbar (Love it!) 
-
 8. Use <leader> space for MRU
-
 9. Use Shift+e for execute Python code 
-
 10. Use Shift+n for execute NodeJS code 
-
 11. Use Shift+j for checking javascript syntax in current file 
-
 12. Also check many goodies bag in .vimrc
-
-
 
 Author
 -------
-I'm using VIM and Netbeans for building many application on PHP, JS and Python
+I'm using VIM and Netbeans for building many application on PHP, Javascript, NodeJS, Ruby and Python
 
 I have a lot of blog which contains many information. You can check here : 
 

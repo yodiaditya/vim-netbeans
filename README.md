@@ -61,7 +61,7 @@ delete ~/.vim/bundle/snipmate.vim/snippets.
 ### A. Python Debugger like pyflakes, pylint and pep8
 
 For installing Python debugger using PIP :
-
+    sudo apt-get install python-pip
     sudo pip install git+git://github.com/kevinw/pyflakes.git
     sudo pip install pylint
     sudo pip install pep8

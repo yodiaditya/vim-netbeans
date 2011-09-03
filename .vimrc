@@ -20,7 +20,6 @@ Bundle 'Conque-Shell'
 Bundle 'L9'
 Bundle 'cschlueter/vim-mustang'
 Bundle 'sukima/xmledit'
-"Bundle 'vim-scripts/closetag.vim'
 Bundle 'mhz/vim-matchit.git'
 Bundle 'vim-scripts/tComment'
 Bundle 'Raimondi/delimitMate'
@@ -34,7 +33,6 @@ Bundle 'vim-scripts/mru.vim'
 "Snipmate
 Bundle 'msanders/snipmate.vim'
 Bundle 'vim-scripts/snipmate-snippets'
-"Bundle 'vim-scripts/AutoComplPop' because there is the creator refer to neocomplcache
 Bundle "Shougo/neocomplcache"
 
 " Python development
@@ -51,7 +49,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'jamescarr/snipmate-nodejs'
 Bundle 'wavded/vim-javascript'
 Bundle 'lunaru/vim-less'
-Bundle 'joestelmach/javaScriptLint.vim'
+"Bundle 'joestelmach/javaScriptLint.vim'
 
 " Syntax checking 
 Bundle 'scrooloose/syntastic'
@@ -115,7 +113,6 @@ filetype plugin indent on     " required!
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
 set history=1000
-set undolevels=1000
 
 " Ignore some file
 set wildignore=*.swp,*.bak,*.pyc,*.class
@@ -212,6 +209,11 @@ endtry
 set nobackup
 set nowb
 set noswapfile
+
+set undodir=~/.vim/undodir
+set undofile
+set undolevels=1000 "maximum number of changes that can be undone
+set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs and buffers

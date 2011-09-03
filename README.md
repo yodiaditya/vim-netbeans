@@ -1,15 +1,19 @@
 VIM-Netbeans
 =============
 
-We want use VIM as great as Netbeans for editing PHP, Phyton, JS, HTML, XML and many else filetype.
+use VIM as great as Netbeans for editing PHP, Python, JS, HTML, XML and many else filetype.
 
-Now this VIM-Netbeans supported with NodeJS, Stylus, Less and many CSS/Javascript engine, template, parser 
+This have several great feature :
 
-This VIM bundled with many plugins, syntax and custom .vimrc configuration. 
+- Supported with NodeJS, Stylus, Less and many CSS/Javascript engine, template, parser 
+- Integrated with JavascriptLint for auto-checking syntax 
+- Have great Python checking and fast shortcut like `Shift - e` for execute current files
+- Use Vundle for managing plugins
+- `F8` for Browser files and Tags
+- Check .vimrc to see many feature and goodies bag
+
 
 This VIM is inspired by many great developers that share their custom VIM configuration.
-
-All TLDR; documentation located in .vimrc. You can read and follow link there to see related projects used.
 
 
 Installing
@@ -17,21 +21,21 @@ Installing
 
 Go to your Command / Terminal : 
 
+{% codeblock %}
 cd ~/
-
-git clone git://github.com/yodiaditya/vim-netbeans.git vim-netbeans
-
+git clone https://github.com/yodiaditya/vim-netbeans.git 
 cd vim-neatbeans
-
 vim .vimrc 
+{% endcodeblock %}
+
 
 When opening .vimrc, do ":BundleInstall" to install all package and exit by :wq.
 
+{% codeblock %}
 rm -rf .vim/bundle/snipmate.vim/snippets
-
 ln -s ~/vim-netbeans/.vim ~/.vim
-
 ln -s ~/vim-netbeans/.vimrc ~/.vimrc
+{% endcodeblock %}
 
 Change your TAB behaviour between PyDiction and Snipmate by follow this link :
 
@@ -39,18 +43,16 @@ http://stackoverflow.com/questions/1687252/with-vim-use-both-snipmate-and-pydict
 
 But i prefer using CTRL+Space as Snipmate Completion. Here a how to make it :
 
-vim .vim/bundle/snipmate.vim/after/plugin/snipMate.vim
+`vim .vim/bundle/snipmate.vim/after/plugin/snipMate.vim`
 
 Edit start from line 15 :
 
+{% codeblock %}
 "ino <silent> <tab> <c-r>=TriggerSnippet()<cr>
-
 "snor <silent> <tab> <esc>i<right><c-r>=TriggerSnippet()<cr>
-
 ino <silent> <C-Space> <c-r>=TriggerSnippet()<cr>
-
 snor <silent> <C-Space> <esc>i<right><c-r>=TriggerSnippet()<CR>
-
+{% endcodeblock %}
 
 
 Dependencies
@@ -68,9 +70,7 @@ A. Python Debugger like pyflakes, pylint and pep8
 For installing Python debugger using PIP :
 
 `sudo pip install git+git://github.com/kevinw/pyflakes.git`
-
 `sudo pip install pylint`
-
 `sudo pip install pep8`
 
 Read .vimrc for magic keys and guide.
@@ -93,9 +93,7 @@ Also add this into .vim/bundle/javaScriptLint.vim/plugin/javaScriptLint.vim :
 
 
 " set up commands
-
 command! JavaScriptLintExec call JavascriptLint()
-
 command! JavaScriptLintClear call s:ClearCursorLineColor()
 
 

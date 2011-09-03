@@ -26,7 +26,7 @@ Go to your Command / Terminal :
     ln -s ~/vim-netbeans/.vimrc ~/.vimrc
     ln -s ~/vim-netbeans/.vim ~/.vim
     git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-    vim .vimrc 
+    vim ~/.vimrc 
 
 When opening .vimrc, do ":BundleInstall" to install all package and exit by :wq.
 
@@ -38,7 +38,7 @@ http://stackoverflow.com/questions/1687252/with-vim-use-both-snipmate-and-pydict
 
 But i prefer using CTRL+Space as Snipmate Completion. Here a how to make it :
 
-`vim .vim/bundle/snipmate.vim/after/plugin/snipMate.vim`
+`vim ~/.vim/bundle/snipmate.vim/after/plugin/snipMate.vim`
 
 Edit start from line 15 :
 
@@ -55,10 +55,10 @@ After do installing, you should go to VIM and do :BundleInstall. I use Vundle he
 
 I use nodejs-snipmate and snipmate-snippets. To preventing crash between default snippets in Snipmate and others,
 
-delete .vim/bundle/snipmate.vim/snippets. 
+delete ~/.vim/bundle/snipmate.vim/snippets. 
 
 
-A. Python Debugger like pyflakes, pylint and pep8
+### A. Python Debugger like pyflakes, pylint and pep8
 
 For installing Python debugger using PIP :
 
@@ -69,14 +69,14 @@ For installing Python debugger using PIP :
 Read .vimrc for magic keys and guide.
 
 
-B. Ctags
+### B. Ctags
 
 If you using Ubuntu, then can do this command :
 
 `sudo apt-get install exuberant-ctags`
 
 
-C. JavascriptLint
+### C. JavascriptLint
 
 This is powerfull Javascript syntax checker with quickfix.
 
@@ -106,6 +106,7 @@ For using this custom VIM, here are some clue :
 10. Use Shift+n for execute NodeJS code 
 11. Use Shift+j for checking javascript syntax in current file 
 12. Also check many goodies bag in .vimrc
+
 
 Author
 -------

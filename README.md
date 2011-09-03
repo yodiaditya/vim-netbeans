@@ -30,9 +30,7 @@ Go to your Command / Terminal :
 
 When opening .vimrc, do ":BundleInstall" to install all package and exit by :wq.
 
-    rm -rf .vim/bundle/snipmate.vim/snippets
-    ln -s ~/vim-netbeans/.vim ~/.vim
-    ln -s ~/vim-netbeans/.vimrc ~/.vimrc
+    rm -rf ~/.vim/bundle/snipmate.vim/snippets
 
 Change your TAB behaviour between PyDiction and Snipmate by follow this link :
 

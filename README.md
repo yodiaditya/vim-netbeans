@@ -23,9 +23,9 @@ Go to your Command / Terminal :
 
     cd ~/
     git clone https://github.com/yodiaditya/vim-netbeans.git 
-    cd vim-neatbeans
+    ln -s ~/vim-netbeans/.vimrc ~/.vimrc
+    ln -s ~/vim-netbeans/.vim ~/.vim
     vim .vimrc 
-
 
 When opening .vimrc, do ":BundleInstall" to install all package and exit by :wq.
 

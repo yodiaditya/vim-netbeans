@@ -21,21 +21,17 @@ Installing
 
 Go to your Command / Terminal : 
 
-{% codeblock %}
-cd ~/
-git clone https://github.com/yodiaditya/vim-netbeans.git 
-cd vim-neatbeans
-vim .vimrc 
-{% endcodeblock %}
+    cd ~/
+    git clone https://github.com/yodiaditya/vim-netbeans.git 
+    cd vim-neatbeans
+    vim .vimrc 
 
 
 When opening .vimrc, do ":BundleInstall" to install all package and exit by :wq.
 
-{% codeblock %}
-rm -rf .vim/bundle/snipmate.vim/snippets
-ln -s ~/vim-netbeans/.vim ~/.vim
-ln -s ~/vim-netbeans/.vimrc ~/.vimrc
-{% endcodeblock %}
+    rm -rf .vim/bundle/snipmate.vim/snippets
+    ln -s ~/vim-netbeans/.vim ~/.vim
+    ln -s ~/vim-netbeans/.vimrc ~/.vimrc
 
 Change your TAB behaviour between PyDiction and Snipmate by follow this link :
 
@@ -47,12 +43,10 @@ But i prefer using CTRL+Space as Snipmate Completion. Here a how to make it :
 
 Edit start from line 15 :
 
-{% codeblock %}
-"ino <silent> <tab> <c-r>=TriggerSnippet()<cr>
-"snor <silent> <tab> <esc>i<right><c-r>=TriggerSnippet()<cr>
-ino <silent> <C-Space> <c-r>=TriggerSnippet()<cr>
-snor <silent> <C-Space> <esc>i<right><c-r>=TriggerSnippet()<CR>
-{% endcodeblock %}
+    "ino <silent> <tab> <c-r>=TriggerSnippet()<cr>
+    "snor <silent> <tab> <esc>i<right><c-r>=TriggerSnippet()<cr>
+    ino <silent> <C-Space> <c-r>=TriggerSnippet()<cr>
+    snor <silent> <C-Space> <esc>i<right><c-r>=TriggerSnippet()<CR>
 
 
 Dependencies
@@ -69,9 +63,9 @@ A. Python Debugger like pyflakes, pylint and pep8
 
 For installing Python debugger using PIP :
 
-`sudo pip install git+git://github.com/kevinw/pyflakes.git`
-`sudo pip install pylint`
-`sudo pip install pep8`
+    `sudo pip install git+git://github.com/kevinw/pyflakes.git`
+    `sudo pip install pylint`
+    `sudo pip install pep8`
 
 Read .vimrc for magic keys and guide.
 
@@ -92,9 +86,9 @@ Folow this link for installation guide : http://cisight.com/auto-checking-errors
 Also add this into .vim/bundle/javaScriptLint.vim/plugin/javaScriptLint.vim :
 
 
-" set up commands
-command! JavaScriptLintExec call JavascriptLint()
-command! JavaScriptLintClear call s:ClearCursorLineColor()
+    " set up commands
+    command! JavaScriptLintExec call JavascriptLint()
+    command! JavaScriptLintClear call s:ClearCursorLineColor()
 
 
 Usage
@@ -133,12 +127,8 @@ I'm using VIM and Netbeans for building many application on PHP, JS and Python
 
 I have a lot of blog which contains many information. You can check here : 
 
-1. http://yoodey.com for Drupal 7, EC2 and Ubuntu Tutorial
-
-2. http://cisight.com for Codeigniter, CakePHP and Optimization Tutorial 
-
-3. http://wpscale.com for Wordpress Tutorial
-
-4. http://yodi.me for my Programming Insight
-
-5. http://re.web.id for Indonesian Python Programming Guide
+- http://yoodey.com for Drupal 7, EC2 and Ubuntu Tutorial
+- http://cisight.com for Codeigniter, CakePHP and Optimization Tutorial 
+- http://wpscale.com for Wordpress Tutorial
+- http://yodi.me for Python, Jekyll, Ruby and many research developments
+- http://re.web.id for Indonesian Python Programming Guide

@@ -25,6 +25,7 @@ Go to your Command / Terminal :
     git clone https://github.com/yodiaditya/vim-netbeans.git 
     ln -s ~/vim-netbeans/.vimrc ~/.vimrc
     ln -s ~/vim-netbeans/.vim ~/.vim
+    git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
     vim .vimrc 
 
 When opening .vimrc, do ":BundleInstall" to install all package and exit by :wq.

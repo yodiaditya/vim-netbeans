@@ -15,7 +15,6 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 " vim-scripts repos
-Bundle 'peaksea'
 Bundle 'Conque-Shell'
 Bundle 'L9'
 Bundle 'cschlueter/vim-mustang'
@@ -29,6 +28,9 @@ Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/nerdtree'
 Bundle 'FuzzyFinder'
 Bundle 'vim-scripts/mru.vim'
+
+"Color scheme
+Bundle 'godlygeek/csapprox.git'
 
 "Snipmate
 Bundle 'msanders/snipmate.vim'
@@ -49,7 +51,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'jamescarr/snipmate-nodejs'
 Bundle 'wavded/vim-javascript'
 Bundle 'lunaru/vim-less'
-"Bundle 'joestelmach/javaScriptLint.vim'
+Bundle 'joestelmach/javaScriptLint.vim'
 
 " Syntax checking 
 Bundle 'scrooloose/syntastic'
@@ -181,19 +183,20 @@ syntax enable "Enable syntax hl
 
 set shell=/bin/bash
 
-if has("gui_running")
-  set guioptions-=T
-  set t_Co=256
-  set background=dark
-  colorscheme mustang 
-  set nonu
-  set gfn=Monospace\ 9.4
-  set lines=999 columns=999
-else
-  set background=dark
-  set gfn=Monospace\ 8
-  set nonu 
-endif
+" if has("gui_running")
+"set guioptions-=T
+set t_Co=256
+" set background=dark
+let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
+colorscheme mustang
+set nonu
+set gfn=Monospace\ 9.4
+"set lines=999 columns=999
+" else
+"   set background=dark
+"   set gfn=Monospace\ 8
+"   set nonu 
+" endif
 
 set encoding=utf8
 try
@@ -256,6 +259,9 @@ set pastetoggle=<F3>          " Press F3 for toggle paste mode
 
 " Paste using ,v in normal mode
 nnoremap <leader>v "+gP
+
+" Set default environment based on current edited files
+autocmd BufEnter * silent! lcd %:p:h
 
 " The best thing here! 
 " In insert mode, you can paste from clipboard using CTRL+v
@@ -442,12 +448,14 @@ nnoremap <leader>l :TagbarToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FuzzFinder Shorcuts. Using F2 for opening FuzzyFinderTextMate
-map <leader>t :FufFileWithCurrentBufferDir<CR>
+map <leader>f :FufFileWithCurrentBufferDir<CR>
 map <F2> :FufFileWithFullCwd<CR>
 map <leader>b :FufBuffer<CR>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MRU shorcuts
 map <leader><space> :MRU<CR> 
+
 """"""""""""""""""""""""""""""""""""""""""""
 " NERDTree : https://github.com/scrooloose/nerdtree.git
 " MODIFYING NERDTree MY CUSTOM
@@ -462,6 +470,7 @@ map <leader><space> :MRU<CR>
 "https://github.com/scrooloose/nerdtree/issues/21
 "
 autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
+nnoremap <leader>t :NERDTreeToggle<CR>
 
 " Close all open buffers on entering a window if the only
 " buffer that's left is the NERDTree buffer

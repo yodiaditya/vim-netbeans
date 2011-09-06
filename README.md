@@ -81,14 +81,16 @@ If you using Ubuntu, then can do this command :
 
 This is powerfull Javascript syntax checker with quickfix.
 
-Folow this link for installation guide : http://cisight.com/auto-checking-errors-for-javascript-in-vim/
+Configuration for jsl.conf located in ~/.vim/jsl.conf. 
 
-Also add this into .vim/bundle/javaScriptLint.vim/plugin/javaScriptLint.vim :
+Tips: You can change warning into '-ambiguous_newline' for disable newline checking (Jquery).
 
+Follow this link for installation guide : http://cisight.com/auto-checking-errors-for-javascript-in-vim/
 
-    " set up commands
-    command! JavaScriptLintExec call JavascriptLint()
-    command! JavaScriptLintClear call s:ClearCursorLineColor()
+For *.js file, auto-checker work automatically after saving file. 
+
+For another filetype ( .php, .py, .rb, etc), you can press SHIFT+j for Javascript checker.
+
 
 ### D. Colorscheme
 

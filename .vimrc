@@ -326,7 +326,6 @@ imap <C-@> <C-Space>
 " Execute PHP file being edited with <Shift> + p:
 map <buffer> <P> :w<CR>:!/usr/bin/php5 % <CR>
 
-"
 " This is from : http://dancingpenguinsoflight.com/2009/02/python-and-vim-make-your-own-ide/
 "
 
@@ -339,8 +338,12 @@ nnoremap E w:<CR>:!python % <CR>
 " Execute NodeJS file being edited with <Shift> + n:
 nnoremap N w:<CR>:!node %<CR>
 
-" Execute javascriptLint vim plugin using <Shift> + j : 
-nnoremap J w:<CR>:JavaScriptLintExec <ENTER><CR>
+" Execute javascriptLint on no-JS files like PHP, python, Html with <Shift> + j : 
+command! JavaScriptLintChecker call JavascriptLint()
+nnoremap J w:<CR>:JavaScriptLintChecker<CR><ENTER><CR>
+
+" Change jsl.conf in ~/.vim/jsl.conf for customization
+let jslint_command_options = '-conf ~/.vim/jsl.conf -nofilelisting -nocontext -nosummary -nologo -process'
 
 " Set autocomplete form 
 set completeopt=menuone,longest,preview

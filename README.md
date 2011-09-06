@@ -90,6 +90,11 @@ Also add this into .vim/bundle/javaScriptLint.vim/plugin/javaScriptLint.vim :
     command! JavaScriptLintExec call JavascriptLint()
     command! JavaScriptLintClear call s:ClearCursorLineColor()
 
+### D. Colorscheme
+
+This VIM using Mustang as Colorscheme. If you use Yakuake for running VIM, then you should change your Yakuke for running 256-colors.
+
+Here are to set it : http://yoodey.com/using-terminal-console-yakuake-running-256-colors
 
 Usage
 ------

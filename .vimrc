@@ -184,9 +184,9 @@ syntax enable "Enable syntax hl
 set shell=/bin/bash
 
 " if has("gui_running")
-"set guioptions-=T
-set t_Co=256
-" set background=dark
+set guioptions-=T
+"set t_Co=256
+set background=dark
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
 colorscheme mustang
 set nonu
@@ -280,7 +280,9 @@ set incsearch       " show 'best match so far' as you type
 set hlsearch        " hilight the items found by the search
 set ignorecase      " ignores case of letters on searches
 set smartcase       " Override the 'ignorecase' option if the search pattern contains upper case characters
-:highlight search guifg=yellow guibg=darkred
+
+hi Search guifg=#ffffff guibg=#0000ff gui=none ctermfg=white ctermbg=darkblue
+hi IncSearch guifg=#ffffff guibg=#8888ff gui=none ctermfg=white
 
 " Use UTF-8 as the default buffer encoding
 set enc=utf-8

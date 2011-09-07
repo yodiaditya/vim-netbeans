@@ -183,20 +183,12 @@ syntax enable "Enable syntax hl
 
 set shell=/bin/bash
 
-" if has("gui_running")
 set guioptions-=T
-"set t_Co=256
 set background=dark
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
 colorscheme mustang
 set nonu
 set gfn=Monospace\ 9.4
-"set lines=999 columns=999
-" else
-"   set background=dark
-"   set gfn=Monospace\ 8
-"   set nonu 
-" endif
 
 set encoding=utf8
 try
@@ -221,6 +213,7 @@ set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 "Useful when moving accross long lines
 map j gj
 map k gk
@@ -234,8 +227,8 @@ map <leader>bd :Bclose<cr>
 map <leader>ba :1,300 bd!<cr>
 
 " Moving tab using CTRL+ the arrows
-map <C-right> :bn<cr>
-map <C-left> :bp<cr>
+map <C-right> :bn<CR>
+map <C-left> :bp<CR>
 
 " Tab configuration
 map <leader>tn :tabnew! %<cr>
@@ -281,8 +274,10 @@ set hlsearch        " hilight the items found by the search
 set ignorecase      " ignores case of letters on searches
 set smartcase       " Override the 'ignorecase' option if the search pattern contains upper case characters
 
+" Search and error color highlights
 hi Search guifg=#ffffff guibg=#0000ff gui=none ctermfg=white ctermbg=darkblue
 hi IncSearch guifg=#ffffff guibg=#8888ff gui=none ctermfg=white
+highlight SpellBad guifg=#ffffff guibg=#8888ff gui=none ctermfg=black ctermbg=darkred
 
 " Use UTF-8 as the default buffer encoding
 set enc=utf-8
@@ -313,18 +308,10 @@ noremap <BS> <PageUp>
 " allow <BkSpc> to delete line breaks, start of insertion, and indents
 set backspace=eol,start,indent
 
-"--- netbeans style with CTRL + SPACE autocompletion ----
-"inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
-"\ "\<lt>C-n>" :
-"\ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
-"\ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
-"\ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
-imap <C-@> <C-Space>
-
 
 "---- PHP executing shortcut --"
 " Execute PHP file being edited with <Shift> + p:
-map <buffer> <P> :w<CR>:!/usr/bin/php5 % <CR>
+nnoremap P w:<CR>:!/usr/bin/php5 % <CR>
 
 " This is from : http://dancingpenguinsoflight.com/2009/02/python-and-vim-make-your-own-ide/
 "
@@ -446,10 +433,8 @@ nmap <F8> :call ToggleNERDTreeAndTagbar()<CR>
 
 " TagBar Configuration
 let g:tagbar_usearrows=1
-let g:tagbar_left=1
 let g:tagbar_width=30
 nnoremap <leader>l :TagbarToggle<CR>
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FuzzFinder Shorcuts. Using F2 for opening FuzzyFinderTextMate
@@ -475,7 +460,7 @@ map <leader><space> :MRU<CR>
 "https://github.com/scrooloose/nerdtree/issues/21
 "
 autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
-nnoremap <leader>t :NERDTreeToggle<CR>
+map <leader>t :NERDTreeToggle<CR>
 
 " Close all open buffers on entering a window if the only
 " buffer that's left is the NERDTree buffer
@@ -505,16 +490,15 @@ let g:pydiction_location='~/.vim/bundle/Pydiction/complete-dict'
 
 "" PYTHON auto completion from http://blog.dispatched.ch/2009/05/24/vim-as-python-ide/
 
-
 "--- python formatting help ---
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
 " Pyflakes : http://sontek.net/turning-vim-into-a-modern-python-ide#id8
-" let g:pyflakes_use_quickfix=1
-" http://lewk.org/blog/python-vim-pyflakes.html
-" au BufWritePost *.py !pyflakes % 
+let g:pyflakes_use_quickfix=0
 
-"
+" http://lewk.org/blog/python-vim-pyflakes.html
+au BufWritePost *.py !pyflakes % 
+
 " Pep8 from : http://sontek.net/turning-vim-into-a-modern-python-ide#id9
 "
 let g:pep8_map='<leader>8'
@@ -537,10 +521,10 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
 if !exists('g:neocomplcache_omni_patterns')
-let g:neocomplcache_omni_patterns = {}
+    let g:neocomplcache_omni_patterns = {}
 endif
+
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-"autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 
 if has("gui_running")

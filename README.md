@@ -107,12 +107,12 @@ For using this custom VIM, here are some clue :
 3. Autocomplete every you type. Also you can use CTRL + Space for Snipmate Autocompletion
 4. Move to another tab / buffer using CTRL+Arrow
 5. Using NERDTree by :NERDTree or editing .vimrc to enable NERDTree automatically.
-6. Using F7 for FuzzFinder in Full Path or <leader>t (,t) for open based on current Buffer 
-7. Press F8 for enabling NERDTRee and Tagbar (Love it!) 
-8. Use <leader> space for MRU
-9. Use Shift+e for execute Python code 
-10. Use Shift+n for execute NodeJS code 
-11. Use Shift+j for checking javascript syntax in current file 
+6. Using `F2` or <leader> t for FuzzFinder in Full Path or <leader>b for open Buffers 
+7. Press `F8` for enabling NERDTRee and Tagbar (Love it!) 
+8. Use ``<leader> space` for MRU
+9. Use `Shift+e` for execute Python code 
+10. Use `Shift+n` for execute NodeJS code 
+11. Use `Shift+j` for checking javascript syntax in current file 
 12. Also check many goodies bag in .vimrc
 
 

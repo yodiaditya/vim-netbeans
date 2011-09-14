@@ -55,6 +55,7 @@ Bundle 'joestelmach/javaScriptLint.vim'
 
 " Syntax checking 
 Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-markdown.git'
 
 
 filetype plugin indent on     " required! 

@@ -92,7 +92,13 @@ For *.js file, auto-checker work automatically after saving file.
 For another filetype ( .php, .py, .rb, etc), you can press SHIFT+j for Javascript checker.
 
 
-### D. Colorscheme
+### C. Installing JSLint, Gjslint, JSHint 
+
+See my blog post here for installation :
+
+[Installing JSlint, Jshint, Gjslint, Cssbeauty and many else](http://www.yodi.me/2011/09/20/top-javascript-checker-tools-that-must-used-by-front-end-developer/)
+
+### E. Colorscheme
 
 This VIM using Mustang as Colorscheme. If you use Yakuake for running VIM, then you should change your Yakuke for running 256-colors.
 

@@ -49,14 +49,13 @@ Bundle 'lukaszb/vim-web-indent'
 Bundle 'mattn/zencoding-vim'
 Bundle 'godlygeek/tabular'
 Bundle 'jamescarr/snipmate-nodejs'
-Bundle 'wavded/vim-javascript'
 Bundle 'lunaru/vim-less'
 Bundle 'joestelmach/javaScriptLint.vim'
+Bundle 'wavded/vim-javascript'
 
 " Syntax checking 
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-markdown.git'
-
 
 filetype plugin indent on     " required! 
 
@@ -532,12 +531,15 @@ if has("gui_running")
     highlight SpellBad term=underline gui=undercurl guisp=Orange
 endif
 
-
-"for Syntastic
-let g:syntastic_enable_signs=1
-let g:syntastic_quiet_warnings=1
+" for Syntastic
 let g:syntastic_auto_loc_list=1
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_jump=1
+let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
 "remove trailing whitespace
 "http://vim.wikia.com/wiki/Remove_unwanted_spaces#Automatically_removing_all_trailing_whitespace

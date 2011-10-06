@@ -14,11 +14,11 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 
-" vim-scripts repos
+" vim-scripts dependency 
 Bundle 'Conque-Shell'
 Bundle 'L9'
-Bundle 'cschlueter/vim-mustang'
-Bundle 'sukima/xmledit'
+
+" Utilities
 Bundle 'mhz/vim-matchit.git'
 Bundle 'vim-scripts/tComment'
 Bundle 'Raimondi/delimitMate'
@@ -30,6 +30,7 @@ Bundle 'FuzzyFinder'
 Bundle 'vim-scripts/mru.vim'
 
 "Color scheme
+Bundle 'cschlueter/vim-mustang'
 Bundle 'godlygeek/csapprox.git'
 
 "Snipmate
@@ -40,6 +41,7 @@ Bundle "Shougo/neocomplcache"
 " Python development
 Bundle 'vim-scripts/Pydiction'
 Bundle 'kevinw/pyflakes-vim'
+Bundle "django.vim"
 
 "Javascript "
 Bundle 'kchmck/vim-coffee-script'
@@ -56,6 +58,10 @@ Bundle 'pangloss/vim-javascript'
 " Syntax checking 
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-markdown.git'
+Bundle "briangershon/html5.vim"
+Bundle "sukima/xmledit"
+Bundle "indentpython.vim"
+
 
 filetype plugin indent on     " required! 
 
@@ -391,11 +397,11 @@ let php_htmlInStrings=1
 " auto save folding : http://princ3.wordpress.com/2007/01/26/automaticaly-save-foldings-in-vim/
 au BufWinLeave * silent! mkview
 au BufWinEnter * silent! loadview
+autocmd BufWinLeave .* mkview
+autocmd BufWinEnter .* silent loadview 
 
 autocmd Syntax c,cpp,vim,xml,html,xhtml,js,php,py,python setlocal foldmethod=manual
 autocmd Syntax c,cpp,vim,xml,html,xhtml,perl normal zR
-set foldlevelstart=99
-"set nofoldenable
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NerdTree and Tagbar using by <F8>
@@ -495,16 +501,17 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:pydiction_location='~/.vim/bundle/Pydiction/complete-dict'
 
+"""" PYTHON STYLE """"
+let python_highlight_all=1 " Enable all plugin's highlighting.
+let python_slow_sync=1 " For fast machines.
+let python_print_as_function=1 " Color 'print' function.
+
 "" PYTHON auto completion from http://blog.dispatched.ch/2009/05/24/vim-as-python-ide/
 
 "--- python formatting help ---
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
-" Pyflakes : http://sontek.net/turning-vim-into-a-modern-python-ide#id8
-let g:pyflakes_use_quickfix=0
-
-" http://lewk.org/blog/python-vim-pyflakes.html
-" au BufWritePost *.py !pyflakes % 
+let g:pyflakes_use_quickfix = 1 " Enable Pyflakes
 
 " Pep8 from : http://sontek.net/turning-vim-into-a-modern-python-ide#id9
 "
@@ -557,7 +564,7 @@ if has("gui_running")
 endif
 
 " for Syntastic
-let g:syntastic_auto_loc_list=1
+let g:syntastic_auto_loc_list=1 "Auto open errors window upon detection
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=1
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'

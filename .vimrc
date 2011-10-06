@@ -1,4 +1,4 @@
-set nocompatible               " be iMproved
+set nocompatible " be iMproved
 filetype off                   " required!
 
 set rtp+=~/.vim/bundle/vundle/
@@ -50,8 +50,8 @@ Bundle 'mattn/zencoding-vim'
 Bundle 'godlygeek/tabular'
 Bundle 'jamescarr/snipmate-nodejs'
 Bundle 'lunaru/vim-less'
-Bundle 'joestelmach/javaScriptLint.vim'
-Bundle 'wavded/vim-javascript'
+"Bundle 'joestelmach/javaScriptLint.vim'
+Bundle 'pangloss/vim-javascript'
 
 " Syntax checking 
 Bundle 'scrooloose/syntastic'
@@ -188,7 +188,7 @@ set background=dark
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
 colorscheme mustang
 set nonu
-set gfn=Monospace\ 9.4
+set gfn=Monospace\ 8.7 
 
 set encoding=utf8
 try
@@ -243,7 +243,7 @@ map <leader>cd :cd %:p:h<cr>
 "
 " My CUSTOM 
 "
-
+set cmdheight=1               " Explicitly set the height of the command line
 set number                    " Display line numbers
 set numberwidth=1             " using only 1 column (and 1 space) while possible
 set title                     " show title in console title bar
@@ -332,12 +332,15 @@ nnoremap J w:<CR>:JavaScriptLintChecker<CR><ENTER><CR>
 " Change jsl.conf in ~/.vim/jsl.conf for customization
 let jslint_command_options = '-conf ~/.vim/jsl.conf -nofilelisting -nocontext -nosummary -nologo -process'
 
+" Shortcut to Close quickfix window with leader+c
+nnoremap <leader>c <CR>:cclose<CR>
+
 " Set autocomplete form 
 set completeopt=menuone,longest,preview
 
 " Enabling Django : https://github.com/robhudson/snipmate_for_django
 autocmd FileType python set ft=python.django " For SnipMate
-" autocmd FileType html set ft=htmldjango.html " For SnipMate
+autocmd FileType html set ft=htmldjango.html " For SnipMate
 
 " Django Tips from https://bitbucket.org/sjl/dotfiles/src/tip/vim/.vimrc
 au BufNewFile,BufRead urls.py      setlocal nowrap
@@ -385,10 +388,14 @@ let php_sql_query=1
 let php_htmlInStrings=1
 
 " Folding
-autocmd Syntax c,cpp,vim,xml,html,xhtml,js,php,py,python setlocal foldmethod=syntax
+" auto save folding : http://princ3.wordpress.com/2007/01/26/automaticaly-save-foldings-in-vim/
+au BufWinLeave * silent! mkview
+au BufWinEnter * silent! loadview
+
+autocmd Syntax c,cpp,vim,xml,html,xhtml,js,php,py,python setlocal foldmethod=manual
 autocmd Syntax c,cpp,vim,xml,html,xhtml,perl normal zR
 set foldlevelstart=99
-set nofoldenable
+"set nofoldenable
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NerdTree and Tagbar using by <F8>
@@ -497,7 +504,7 @@ autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,
 let g:pyflakes_use_quickfix=0
 
 " http://lewk.org/blog/python-vim-pyflakes.html
-au BufWritePost *.py !pyflakes % 
+" au BufWritePost *.py !pyflakes % 
 
 " Pep8 from : http://sontek.net/turning-vim-into-a-modern-python-ide#id9
 "
@@ -514,10 +521,28 @@ let g:neocomplcache_min_syntax_length = 4
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType html,markdown,ctp setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php,ctp setlocal omnifunc=phpcomplete#CompletePHP
+autocmd FileType vim set omnifunc=syntaxcomplete#Complete
+
+"from https://github.com/chronon/dot-vim/blob/master/vimrc
+
+" cakephp
+autocmd BufEnter,BufRead {controllers,models,views,plugins,lib}/* set ft=php.cakephp
+autocmd BufEnter,BufRead {Controller,Model,View,Plugin,Lib}/* set ft=php.cakephp
+autocmd FileType php,php.cakephp set commentstring=//\%s
+autocmd FileType html set commentstring=<!--%s-->
+
+" http://stackoverflow.com/questions/1747091/how-do-you-use-vims-quickfix-feature
+" autocmd BufWritePost,FileWritePost *.html call JavascriptLint()
+" autocmd BufWritePost,FileWritePost *.jade call JavascriptLint()
+" autocmd BufWritePost,FileWritePost *.ctp call JavascriptLint()
+
+" markdown
+au BufEnter,Bufread *.mkd,*.md,*.mdown,*.markdown setlocal tw=0
 
 " Enable heavy omni completion.
 if !exists('g:neocomplcache_omni_patterns')
@@ -536,6 +561,7 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=1
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+let g:syntastic_enable_balloons=1 
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -552,11 +578,15 @@ autocmd BufWritePre *.php :%s/\s\+$//e
 autocmd BufWritePre *.pl :%s/\s\+$//e
 autocmd BufWritePre *.py :%s/\s\+$//e
 
-" Enable autoclose tags only for html
-"http://mirnazim.org/writings/vim-plugins-i-use/
-" autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
-" autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag/plugin/closetag.vim
+" tabs, not spaces for php, ctp
+au BufEnter,BufRead *.php,*.ctp setlocal noexpandtab
 
+" Autoclose quickfix windows when quit
+" http://stackoverflow.com/questions/7476126/how-to-automatically-close-the-quick-fix-window-when-leaving-a-file
+aug QFClose
+  au!
+  au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
+aug END
 
 " http://stackoverflow.com/questions/1687252/with-vim-use-both-snipmate-and-pydiction-together-share-the-tab-key "
 " Change share keys between pydiction and snipmate

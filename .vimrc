@@ -22,6 +22,7 @@ Bundle 'L9'
 Bundle 'mhz/vim-matchit.git'
 Bundle 'vim-scripts/tComment'
 Bundle 'Raimondi/delimitMate'
+Bundle 'tpope/vim-surround'
 
 "Files manager
 Bundle 'majutsushi/tagbar'
@@ -41,7 +42,7 @@ Bundle "Shougo/neocomplcache"
 " Python development
 Bundle 'vim-scripts/Pydiction'
 Bundle 'kevinw/pyflakes-vim'
-Bundle "django.vim"
+Bundle 'vim-scripts/django.vim'
 
 "Javascript "
 Bundle 'kchmck/vim-coffee-script'
@@ -61,7 +62,6 @@ Bundle 'tpope/vim-markdown.git'
 Bundle "briangershon/html5.vim"
 Bundle "sukima/xmledit"
 Bundle "indentpython.vim"
-
 
 filetype plugin indent on     " required! 
 
@@ -362,6 +362,21 @@ au BufNewFile,BufRead settings.py  setlocal foldmethod=marker
 au BufNewFile,BufRead forms.py     setlocal filetype=python.django
 au BufNewFile,BufRead common_settings.py  setlocal filetype=python.django
 au BufNewFile,BufRead common_settings.py  setlocal foldmethod=marker
+
+" 
+" Django Surround https://code.djangoproject.com/wiki/UsingVimWithDjango
+"   'sb' for block
+"   'si' for an if statement
+"   'sw' for a with statement
+"   'sc' for a comment
+"   'sf' for a for statement 
+"autocmd VimEnter * xunmap s
+
+let g:surround_{char2nr("b")} = "{% block\1 \r..*\r &\1%}\r{% endblock %}"
+let g:surround_{char2nr("i")} = "{% if\1 \r..*\r &\1%}\r{% endif %}"
+let g:surround_{char2nr("w")} = "{% with\1 \r..*\r &\1%}\r{% endwith %}"
+let g:surround_{char2nr("c")} = "{% comment\1 \r..*\r &\1%}\r{% endcomment %}"
+let g:surround_{char2nr("f")} = "{% for\1 \r..*\r &\1%}\r{% endfor %}"
 
 " http://www.brankovukelic.com/post/2091037293/turn-vim-into-powerful-javascript-editor"
 

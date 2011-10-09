@@ -179,7 +179,6 @@ set showmatch "Show matching bracets when text indicator is over them
 " No sound on errors
 set noerrorbells
 set novisualbell
-set t_vb=
 set tm=500
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

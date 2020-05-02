@@ -85,8 +85,6 @@ Configuration for jsl.conf located in ~/.vim/jsl.conf.
 
 Tips: You can change warning into '-ambiguous_newline' for disable newline checking (Jquery).
 
-Follow this link for installation guide : http://cisight.com/auto-checking-errors-for-javascript-in-vim/
-
 For *.js file, auto-checker work automatically after saving file. 
 
 For another filetype ( .php, .py, .rb, etc), you can press SHIFT+j for Javascript checker.
@@ -101,8 +99,6 @@ See my blog post here for installation :
 ### E. Colorscheme
 
 This VIM using Mustang as Colorscheme. If you use Yakuake for running VIM, then you should change your Yakuke for running 256-colors.
-
-Here are to set it : http://yoodey.com/using-terminal-console-yakuake-running-256-colors
 
 Usage
 ------
@@ -128,8 +124,4 @@ I'm using VIM and Netbeans for building many application on PHP, Javascript, Nod
 
 I have a lot of blog which contains many information. You can check here : 
 
-- http://yoodey.com for Drupal 7, EC2 and Ubuntu Tutorial
-- http://cisight.com for Codeigniter, CakePHP and Optimization Tutorial 
-- http://wpscale.com for Wordpress Tutorial
-- http://yodi.me for Python, Jekyll, Ruby and many research developments
-- http://re.web.id for Indonesian Python Programming Guide
+- https://yodiw.com - Programming blog
